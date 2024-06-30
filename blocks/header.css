@@ -1,0 +1,29 @@
+.header {
+    padding-top: 45px;
+    padding-bottom: 32px;
+    border-bottom: solid 1px rgb(84 84 84 / .7);
+}
+
+.header__image {
+    width: 173px;
+    height: 33px;
+    color: #fff;
+}
+
+@media screen and (max-width: 895px) {
+  .header {
+    max-width: 614px;
+  }
+}
+
+@media screen and (max-width: 596px) {
+    .header {
+      padding-top: 28px;
+    }
+  
+    .header__image {
+      width: 126px;
+      height: 24px;
+      margin-left: 27px;
+    }
+  }
