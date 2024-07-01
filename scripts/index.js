@@ -87,4 +87,15 @@ initialCards.forEach((cardData) => {
   cardListEle.append(cardElement);
 });
 
+const profileAddButton = document.querySelector(".profile__add-button");
+const profileAddModal = document.querySelector(".add-modal");
+const profileAddClose = document.querySelector(".add-modal__close");
+const profileAddHeader = document.querySelector(".add-modal__header");
+const profileAddTitle = document.querySelector("#add_modal__title");
+const profileAddImage = document.querySelector("#add-modal__image");
+const profileAddForm = document.querySelector(".add-modal__form");
 
+profileAddButton.addEventListener("click", () => {
+  profileAddTitle.value =
+  profileAddModal.classList.add("add-modal_opened");
+});
