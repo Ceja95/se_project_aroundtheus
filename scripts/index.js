@@ -7,7 +7,7 @@ const object1 = {
 const object2 = {
   name: "Lake Louise",
   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
-  alt: "picture of lake louise"
+  alt: "picture of lake louise",
 };
 
 const object3 = {
@@ -44,13 +44,17 @@ const profileCloseButton = document.querySelector(".modal__close");
 const profileTitle = document.querySelector(".profile__title");
 const profileDescription = document.querySelector(".profile__paragraph");
 const profileTitleInput = document.querySelector("#profile-name-input");
-const profileDescriptionInput = document.querySelector("#profile-description-input");
+const profileDescriptionInput = document.querySelector(
+  "#profile-description-input"
+);
 const profileEditForm = profileEditModal.querySelector(".modal__form");
-const cardTemplate = document.querySelector(".card-template").content.firstElementChild;
+const cardTemplate =
+  document.querySelector(".card-template").content.firstElementChild;
 const cardListEle = document.querySelector(".cards__list");
 
 function closePopup() {
   profileEditModal.classList.remove("modal_opened");
+  profileAddModal.classList.remove(".add-modal_opened");
 }
 
 function getCardElement(cardData) {
@@ -91,11 +95,27 @@ const profileAddButton = document.querySelector(".profile__add-button");
 const profileAddModal = document.querySelector(".add-modal");
 const profileAddClose = document.querySelector(".add-modal__close");
 const profileAddHeader = document.querySelector(".add-modal__header");
-const profileAddTitle = document.querySelector("#add_modal__title");
-const profileAddImage = document.querySelector("#add-modal__image");
+const profileAddTitle = document.querySelector("#profile-title-input");
+const profileAddImage = document.querySelector("#profile-image-input");
 const profileAddForm = document.querySelector(".add-modal__form");
 
 profileAddButton.addEventListener("click", () => {
-  profileAddTitle.value =
   profileAddModal.classList.add("add-modal_opened");
+});
+
+profileAddForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const name = profileAddTitle.value;
+  const link = profileAddImage.value;
+  const cardElement = getCardElement({
+    name,
+    link,
+  });
+  cardListEle.append(cardElement);
+  console.log(profileAddTitle, profileAddImage);
+  closePopup();
+});
+
+profileAddClose.addEventListener("click", () => {
+  closePopup();
 });
