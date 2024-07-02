@@ -54,7 +54,7 @@ const cardListEle = document.querySelector(".cards__list");
 
 function closePopup() {
   profileEditModal.classList.remove("modal_opened");
-  profileAddModal.classList.remove(".add-modal_opened");
+  profileAddModal.classList.remove("add-modal_opened");
 }
 
 function getCardElement(cardData) {
@@ -112,7 +112,6 @@ profileAddForm.addEventListener("submit", (e) => {
     link,
   });
   cardListEle.append(cardElement);
-  console.log(profileAddTitle, profileAddImage);
   closePopup();
 });
 
