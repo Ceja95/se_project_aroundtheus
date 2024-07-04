@@ -93,8 +93,8 @@
     .modal__close {
         width: 26px;
         height: 26px;
-        top: -45px;
-        left: calc(100% - 35px);
+        left: unset;
+        right: 7px;
     }
 
     .modal__header {

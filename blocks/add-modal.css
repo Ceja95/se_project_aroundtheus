@@ -108,8 +108,8 @@
     .add-modal__close {
         width: 26px;
         height: 26px;
-        bottom: calc(100% + 18px);
-        left: calc(100% + -35px);
+        left: unset;
+        right: 7px;
     }
 
     .add-modal__button {
