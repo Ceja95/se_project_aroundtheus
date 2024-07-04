@@ -1,0 +1,44 @@
+.image-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-modal_opened {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-modal__content {
+    width: 433px;
+    height: 540px;
+    background-color: #fff;
+    color: #000;
+    position: relative;
+}
+
+.image-modal__form {
+}
+
+.image-modal__close {
+    width: 40px;
+    height: 40px;
+    background-image: url(../images/Close.svg);
+    border: none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    bottom: calc(100% + 5px);
+    left: calc(100% + 5px);
+    cursor: pointer;
+}
+
+.image-modal__caption {
+}
