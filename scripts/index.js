@@ -47,15 +47,15 @@ const profileTitleInput = document.querySelector("#profile-name-input");
 const profileDescriptionInput = document.querySelector(
   "#profile-description-input"
 );
+const profileEditForm = profileEditModal.querySelector(".modal__form");
+const cardTemplate =
+  document.querySelector(".card-template").content.firstElementChild;
+const cardListEle = document.querySelector(".cards__list");
 
 const modalImage = document.querySelector(".image-modal__picture");
 const imageModal = document.querySelector(".image-modal");
 const imageCaption = document.querySelector(".image-modal__caption");
 const imageClose = document.querySelector(".image-modal__close");
-const profileEditForm = profileEditModal.querySelector(".modal__form");
-const cardTemplate =
-  document.querySelector(".card-template").content.firstElementChild;
-const cardListEle = document.querySelector(".cards__list");
 
 function closePopup() {
   profileEditModal.classList.remove("modal_opened");
@@ -72,8 +72,8 @@ function getCardElement(cardData) {
   
   cardImageEle.addEventListener("click", () => {
     imageModal.classList.add("image-modal_opened");
-    modalImage.src = cardData.link; //set src of image = card data link
-    imageCaption = cardData.alt; //set caption = card data alt
+    modalImage.src = cardData.link;
+    imageCaption.alt = cardData.alt;
   });
 
   imageClose.addEventListener("click", () => {
