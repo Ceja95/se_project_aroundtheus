@@ -1,14 +1,12 @@
 .image-modal {
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
 }
-
 .image-modal_opened {
     display: flex;
     justify-content: center;
@@ -16,14 +14,14 @@
 }
 
 .image-modal__content {
-    width: 433px;
-    height: 540px;
-    background-color: #fff;
-    color: #000;
+    max-width: 1280px;
+    height: 720px;
     position: relative;
 }
 
-.image-modal__form {
+.image-modal__picture {
+    max-width: 75vw;
+    max-height: 75vh;
 }
 
 .image-modal__close {
@@ -41,4 +39,5 @@
 }
 
 .image-modal__caption {
+    color: #fff;
 }

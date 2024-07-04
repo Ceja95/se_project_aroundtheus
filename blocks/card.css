@@ -4,6 +4,7 @@
     min-height: 361px;
     overflow: hidden;
     background-color: white;
+    position: relative;
 }
 
 .card__image {
