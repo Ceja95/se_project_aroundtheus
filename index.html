@@ -38,7 +38,7 @@
         </footer>
     </div>
 
-    <div class="modal">
+    <div id="edit-modal" class="modal">
         <div class="modal__container">
             <form class="modal__form">
                 <button class="modal__close"></button>
@@ -50,23 +50,23 @@
         </div>
     </div>
 
-    <div class="add-modal">
-        <div class="add-modal__content">
-            <form class="add-modal__form">
-                <button class="add-modal__close"></button>
-                <p class="add-modal__header">New place</p>
-                <input type="text" class="add-modal__input" id="profile-title-input" placeholder="Title">
-                <input type="text" class="add-modal__input" id="profile-image-input" placeholder="Image URL">
-                <button class="add-modal__button">Create</button>
+    <div id="add-modal" class="modal">
+        <div class="modal__box">
+            <form class="modal__form" id="add-form">
+                <button class="modal__close" id="add-close"></button>
+                <p class="modal__header" id="add-header">New place</p>
+                <input class="modal__input" id="profile-title-input" type="text" placeholder="Title">
+                <input class="modal__input" id="profile-image-input" type="text" placeholder="Image Url">
+                <button class="modal__button" id="add-button">Create</button>
             </form>
         </div>
     </div>
 
-    <div class="image-modal">
-        <div class="image-modal__content">
-                <button class="image-modal__close"></button>
-                <img src="" alt="" class="image-modal__picture">
-                <p class="image-modal__caption"></p>
+    <div id="image-modal" class="modal">
+        <div class="modal__content">
+                <button class="modal__close"></button>
+                <img src="" alt="" class="modal__picture">
+                <p class="modal__caption"></p>
         </div>
     </div>
 

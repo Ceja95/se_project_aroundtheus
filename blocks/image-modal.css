@@ -1,4 +1,4 @@
-.image-modal {
+.modal {
     display: none;
     position: fixed;
     top: 0;
@@ -7,22 +7,22 @@
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.5);
 }
-.image-modal_opened {
+.modal_opened {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.image-modal__content {
+.modal__content {
     position: relative;
 }
 
-.image-modal__picture {
+.modal__picture {
     max-width: 75vw;
     max-height: 75vh;
 }
 
-.image-modal__close {
+.modal__close {
     width: 40px;
     height: 40px;
     background-image: url(../images/Close.svg);
@@ -36,12 +36,12 @@
     cursor: pointer;
 }
 
-.image-modal__caption {
+.modal__caption {
     color: #fff;
 }
 
 @media screen and (max-width: 597px) {
-    .image-modal__close {
+    .modal__close {
         width: 30px;
         height: 30px;
         left: unset;
@@ -50,7 +50,7 @@
 }
 
 @media screen and (max-width: 896) {
-    .image-modal__content {
+    .modal__content {
         max-width: 240px;
         height: 299px;
     }
