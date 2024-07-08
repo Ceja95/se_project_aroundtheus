@@ -83,6 +83,20 @@
     cursor: pointer;
 }
 
+.modal__content {
+    position: relative;
+}
+
+.modal__picture {
+    max-width: 75vw;
+    max-height: 75vh;
+}
+
+.modal__caption {
+    color: #fff;
+}
+
+
 @media screen and (max-width: 597px) {
     .modal__form {
         max-width: 282px;
