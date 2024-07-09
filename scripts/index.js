@@ -143,7 +143,7 @@ addForm.addEventListener("submit", (e) => {
     link,
   });
   addForm.reset();
-  cardListEle.append(cardElement);
+  cardListEle.prepend(cardElement);
   closePopup(addModal);
 });
 
