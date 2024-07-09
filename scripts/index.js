@@ -58,7 +58,7 @@ const imageCaption = document.querySelector(".modal__caption");
 const imageClose = imageModal.querySelector(".modal__close");
 
 function closePopup(modal) {
-  modal.classList.remove("modal_opened")
+  modal.classList.remove("modal_opened");
 }
 
 function openPopup(modal) {
@@ -71,7 +71,7 @@ function getCardElement(cardData) {
   const cardDescriptionEle = cardElement.querySelector(".card__header");
   const likeButton = cardElement.querySelector(".card__like-button");
   const deleteButton = cardElement.querySelector(".card__delete-button");
-  
+
   cardImageEle.addEventListener("click", () => {
     openPopup(imageModal);
 
@@ -121,7 +121,7 @@ initialCards.forEach((cardData) => {
   cardListEle.prepend(cardElement);
 });
 
-const profileAddButton = document.querySelector(".profile__add-button")
+const profileAddButton = document.querySelector(".profile__add-button");
 const addButton = document.querySelector("#add-button");
 const addModal = document.querySelector("#add-modal");
 const addClose = document.querySelector("#add-close");
@@ -142,6 +142,7 @@ addForm.addEventListener("submit", (e) => {
     name,
     link,
   });
+  addForm.reset();
   cardListEle.append(cardElement);
   closePopup(addModal);
 });
