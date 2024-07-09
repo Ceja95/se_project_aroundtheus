@@ -77,7 +77,7 @@ function getCardElement(cardData) {
 
     modalImage.alt = cardData.alt;
     modalImage.src = cardData.link;
-    imageCaption.textContent = cardData.alt;
+    imageCaption.textContent = `Picture of ${cardData.name}`;
   });
 
   deleteButton.addEventListener("click", () => {
