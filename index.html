@@ -43,8 +43,9 @@
             <form class="modal__form">
                 <button type="button" class="modal__close"></button>
                 <p class="modal__header">Edit Profile</p>
-                <input class="modal__input" id="profile-name-input" type="text" placeholder="Name">
-                <input class="modal__input" id="profile-description-input" type="text" placeholder="Description">
+                <input class="modal__input" id="profile-name-input" type="text" placeholder="Name" minlength="2" maxlength="40" required>
+                <input class="modal__input" id="profile-description-input" type="text" placeholder="Description" minlength="2" maxlength="200" required>
+                <span class="modal__popup-error" id="profile-name-input-error"></span>
                 <button class="modal__button">Save</button>
             </form>
         </div>
@@ -57,6 +58,7 @@
                 <p class="modal__header" id="add-header">New place</p>
                 <input class="modal__input" id="profile-title-input" type="text" placeholder="Title">
                 <input class="modal__input" id="profile-image-input" type="text" placeholder="Image Url">
+                <span class="modal__popup-error" id="profile-title-input-error"></span>
                 <button class="modal__button" id="add-button">Create</button>
             </form>
         </div>
