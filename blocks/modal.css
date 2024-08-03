@@ -108,6 +108,19 @@
     color: #fff;
 }
 
+.modal__popup_error_visible {
+    font-family: "Inter", Arial, sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.2;
+    color: #FF0000;
+    padding-left: 36px;
+}
+
+.modal__popup_input_type_error {
+    border-bottom: 1px solid #FF0000;
+}
+
 
 @media screen and (max-width: 597px) {
     .modal__form {

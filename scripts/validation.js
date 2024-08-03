@@ -66,8 +66,8 @@ const config = {
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__button",
   inactiveButtonClass: "modal__button_disabled",
-  inputErrorClass: "popup__input_type_error",
-  errorClass: "popup__error_visible",
+  inputErrorClass: "modal__popup_input_type_error",
+  errorClass: "modal__popup_error_visible",
 };
 
 enableValidation(config);
