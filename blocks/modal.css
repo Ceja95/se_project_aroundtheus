@@ -77,6 +77,11 @@
     opacity: 60%;
 }
 
+.modal__button_disabled {
+    background-color: #fff;
+    color: gray;
+}
+
 .modal__close {
     width: 40px;
     height: 40px;
