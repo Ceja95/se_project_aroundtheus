@@ -124,8 +124,6 @@
     line-height: 1.2;
     color: #FF0000;
     padding-left: 36px;
-    position: absolute;
-    top: 10px;
 }
 
 .modal__popup_input_type_error {
