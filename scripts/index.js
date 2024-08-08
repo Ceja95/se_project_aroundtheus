@@ -60,16 +60,16 @@ const imageClose = imageModal.querySelector(".modal__close");
 function closePopup(modal) {
   modal.classList.remove("modal_opened");
   document.removeEventListener("keydown", handleEsc);
-  modal.removeEventListener("mousedown", handleOverlayClick);
+  modal.removeEventListener("mousedown", handleModalClick);
 }
 
 function openPopup(modal) {
   modal.classList.add("modal_opened");
   document.addEventListener("keydown", handleEsc);
-  modal.addEventListener("mousedown", handleOverlayClick);
+  modal.addEventListener("mousedown", handleModalClick);
 }
 
-function handleOverlayClick(e) {
+function handleModalClick(e) {
   if (e.currentTarget === e.target || e.target.classList.contains("modal__close")) {
     closePopup(e.currentTarget)
   }

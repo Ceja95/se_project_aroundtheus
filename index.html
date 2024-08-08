@@ -43,10 +43,16 @@
             <form class="modal__form">
                 <button type="button" class="modal__close"></button>
                 <p class="modal__header">Edit Profile</p>
-                <input class="modal__input" id="profile-name-input" type="text" placeholder="Name" minlength="2" maxlength="40" required>
-                <span class="modal__popup-error" id="profile-name-input-error"></span>
-                <input class="modal__input" id="profile-description-input" type="text" placeholder="Description" minlength="2" maxlength="200" required>
-                <span class="modal__popup-error" id="profile-description-input-error"></span>
+                <label class="modal__label" for="add-name">
+                    <input class="modal__input" id="profile-name-input" type="text" placeholder="Name" minlength="2"
+                        maxlength="40" required>
+                    <span class="modal__popup-error" id="profile-name-input-error"></span>
+                </label>
+                <label class="modal__label" for="add-description">
+                    <input class="modal__input" id="profile-description-input" type="text" placeholder="Description"
+                        minlength="2" maxlength="200" required>
+                    <span class="modal__popup-error" id="profile-description-input-error"></span>
+                </label>
                 <button class="modal__button modal__button_disabled" disabled>Save</button>
             </form>
         </div>
@@ -57,10 +63,14 @@
             <form class="modal__form" id="add-form">
                 <button type="button" class="modal__close" id="add-close"></button>
                 <p class="modal__header" id="add-header">New place</p>
-                <input class="modal__input" id="profile-title-input" type="text" placeholder="Title" required>
-                <span class="modal__popup-error" id="profile-title-input-error"></span>
-                <input class="modal__input" id="profile-image-input" type="url" placeholder="Image Url" required>
-                <span class="modal__popup-error" id="profile-image-input-error"></span>
+                <label class="modal__label" for="add-title">
+                    <input class="modal__input" id="profile-title-input" type="text" placeholder="Title" minlength="1" maxlength="30" required>
+                    <span class="modal__popup-error" id="profile-title-input-error"></span>
+                </label>
+                <label class="modal__label" for="add-image">
+                    <input class="modal__input" id="profile-image-input" type="url" placeholder="Image Url" required>
+                    <span class="modal__popup-error" id="profile-image-input-error"></span>
+                </label>
                 <button class="modal__button modal__button_disabled" id="add-button" disabled>Create</button>
             </form>
         </div>
@@ -68,9 +78,9 @@
 
     <div id="image-modal" class="modal">
         <div class="modal__content">
-                <button class="modal__close"></button>
-                <img src="" alt="" class="modal__picture">
-                <p class="modal__caption"></p>
+            <button class="modal__close"></button>
+            <img src="" alt="" class="modal__picture">
+            <p class="modal__caption"></p>
         </div>
     </div>
 
