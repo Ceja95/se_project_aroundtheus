@@ -1,4 +1,5 @@
 import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
 
 const object1 = {
   name: "Yosemite Valley",
@@ -41,14 +42,13 @@ const initialCards = [object1, object2, object3, object4, object5, object6];
 console.log(initialCards);
 
 const cardData = {
-    name: "Yosemite Valley",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-    alt: "picture of yosemite valley",
+  name: "Yosemite Valley",
+  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
+  alt: "picture of yosemite valley",
 };
 
 const card = new Card(cardData, ".card-template");
 card.getView();
-
 
 const profileEditButton = document.querySelector(".profile__edit-button");
 const profileEditModal = document.querySelector("#edit-modal");
@@ -82,8 +82,11 @@ function openPopup(modal) {
 }
 
 function handleModalClick(e) {
-  if (e.currentTarget === e.target || e.target.classList.contains("modal__close")) {
-    closePopup(e.currentTarget)
+  if (
+    e.currentTarget === e.target ||
+    e.target.classList.contains("modal__close")
+  ) {
+    closePopup(e.currentTarget);
   }
 }
 
@@ -92,7 +95,7 @@ function handleEsc(e) {
     const openedModal = document.querySelector(".modal_opened");
     closePopup(openedModal);
   }
-};
+}
 
 function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
@@ -123,7 +126,6 @@ function getCardElement(cardData) {
 
   return cardElement;
 }
-
 
 profileEditButton.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
