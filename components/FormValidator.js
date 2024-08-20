@@ -5,9 +5,9 @@ export default class FormValidator {
 
     _checkInputValidity(formEl, inputEl) {
         if (!inputEl.validity.valid) {
-            _showInputError(formEl, inputEl, this._config);
+            this._showInputError(formEl, inputEl, this._config);
         } else {
-            _hideInputError(formEl, inputEl, this._config);
+            this._hideInputError(formEl, inputEl, this._config);
         }
     }
 
@@ -34,7 +34,7 @@ export default class FormValidator {
         inputEls.forEach((inputEl) => {
             inputEl.addEventListener("input", () => {
                 this._checkInputValidity(formEl, inputEl);
-                this.toggleButtonState(inputEls, submitButton, config);
+                this.toggleButtonState(inputEls, submitButton, this._config);
             });
         });
     }
