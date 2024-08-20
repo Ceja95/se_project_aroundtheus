@@ -61,7 +61,7 @@ function enableValidation(config) {
   });
 }
 
-const config = {
+export const config = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__button",

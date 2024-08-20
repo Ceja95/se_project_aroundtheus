@@ -1,5 +1,6 @@
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
+import { config } from "../scripts/validation.js";
 
 const object1 = {
   name: "Yosemite Valley",
@@ -38,17 +39,6 @@ const object6 = {
 };
 
 const initialCards = [object1, object2, object3, object4, object5, object6];
-
-console.log(initialCards);
-
-const cardData = {
-  name: "Yosemite Valley",
-  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-  alt: "picture of yosemite valley",
-};
-
-const card = new Card(cardData, ".card-template");
-card.getView();
 
 const profileEditButton = document.querySelector(".profile__edit-button");
 const profileEditModal = document.querySelector("#edit-modal");
@@ -112,14 +102,6 @@ function getCardElement(cardData) {
     imageCaption.textContent = `Picture of ${cardData.name}`;
   });
 
-  deleteButton.addEventListener("click", () => {
-    cardElement.remove();
-  });
-
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("card__like-button_active");
-  });
-
   cardDescriptionEle.textContent = cardData.name;
   cardImageEle.src = cardData.link;
   cardImageEle.alt = cardData.alt;
@@ -170,3 +152,12 @@ addForm.addEventListener("submit", (e) => {
   cardListEle.prepend(cardElement);
   closePopup(addModal);
 });
+
+initialCards.forEach ((cardData) => {
+  const card = new Card(cardData, ".card-template");
+  const cardElement = card.getView(cardData);
+  cardListEle.prepend(cardElement);
+});
+
+const testFormValidator = new FormValidator(config);
+testFormValidator.enableValidation();

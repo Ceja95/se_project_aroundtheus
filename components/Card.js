@@ -33,7 +33,15 @@ export default class Card {
       .querySelector(this._cardSelector)
       .content.querySelector(".card")
       .cloneNode(true);
+
+      const cardImage = this._cardElement.querySelector(".card__image");
+      const cardTitle = this._cardElement.querySelector(".card__header");
+      cardImage.src = this._cardData.link;
+      cardImage.alt = this._cardData.name;
+      cardTitle.textContent = this._cardData.name;
     
     this._setEventListeners();
+
+    return this._cardElement;
   }
 }
