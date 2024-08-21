@@ -6,6 +6,10 @@ export default class Card {
   }
 
   _setEventListeners() {
+    this._cardImage.addEventListener("click", () => {
+      this._handleImageClick(this._cardData);
+    })
+
     this._cardElement
       .querySelector(".card__like-button")
       .addEventListener("click", () => {
@@ -34,11 +38,12 @@ export default class Card {
       .content.querySelector(".card")
       .cloneNode(true);
 
-      const cardImage = this._cardElement.querySelector(".card__image");
-      const cardTitle = this._cardElement.querySelector(".card__header");
-      cardImage.src = this._cardData.link;
-      cardImage.alt = this._cardData.name;
-      cardTitle.textContent = this._cardData.name;
+      this._cardImage = this._cardElement.querySelector(".card__image");
+      this._cardTitle = this._cardElement.querySelector(".card__header");
+
+      this._cardImage.src = this._cardData.link;
+      this._cardImage.alt = this._cardData.alt;
+      this._cardTitle.textContent = this._cardData.name;
     
     this._setEventListeners();
 

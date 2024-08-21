@@ -45,7 +45,6 @@ export default class FormValidator {
         formEls.forEach((formEl) => {
             formEl.addEventListener("submit", (e) => {
                 e.preventDefault();
-                // some action
             });
             this._setEventListeners(formEl);
         });

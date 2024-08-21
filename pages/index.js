@@ -122,11 +122,6 @@ profileEditForm.addEventListener("submit", (e) => {
   closePopup(profileEditModal);
 });
 
-initialCards.forEach((cardData) => {
-  const cardElement = getCardElement(cardData);
-  cardListEle.prepend(cardElement);
-});
-
 const profileAddButton = document.querySelector(".profile__add-button");
 const addButton = document.querySelector("#add-button");
 const addModal = document.querySelector("#add-modal");
@@ -153,8 +148,15 @@ addForm.addEventListener("submit", (e) => {
   closePopup(addModal);
 });
 
+function handleImageClick(cardData) {
+  openPopup(imageModal);
+  modalImage.alt = cardData.alt;
+  modalImage.src = cardData.link;
+  imageCaption.textContent = `Picture of ${cardData.name}`;
+}
+
 initialCards.forEach ((cardData) => {
-  const card = new Card(cardData, ".card-template");
+  const card = new Card(cardData, ".card-template", handleImageClick);
   const cardElement = card.getView(cardData);
   cardListEle.prepend(cardElement);
 });
