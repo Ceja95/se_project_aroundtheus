@@ -8,6 +8,23 @@ export default class Card {
   _setEventListeners() {
     this._cardImage.addEventListener("click", () => {
       this._handleImageClick(this._cardData);
+
+      this._cardElement.querySelector("#add-form").addEventListener("submit", (e) => {
+        e.preventDefault();
+        this._name = this._cardElement(".#profile-title-input");
+        this._link = this._cardElement(".#profile-image-input");
+        this._addForm = this._cardElement("#add-form");
+
+        const name = this._name.value;
+        const link = this._link.value;
+        this._cardElement = this._cardElement({
+          name,
+          link,
+        });
+        this._addForm.reset();
+        cardListEle.prepend(this._cardElement);
+        closePopup(addModal);
+      });
     })
 
     this._cardElement
