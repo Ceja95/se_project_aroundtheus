@@ -17,7 +17,7 @@ export default class Card {
 
         const name = this._name.value;
         const link = this._link.value;
-        this._cardElement = this._cardElement({
+        this._cardElement = this._cardSelector({
           name,
           link,
         });
