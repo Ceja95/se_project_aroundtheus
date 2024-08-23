@@ -67,7 +67,7 @@ export default class FormValidator {
         }
     }
 
-    const config = {
+        config = {
         formSelector: ".modal__form",
         inputSelector: ".modal__input",
         submitButtonSelector: ".modal__button",
@@ -75,6 +75,5 @@ export default class FormValidator {
         inputErrorClass: "modal__popup_input_type_error",
         errorClass: "modal__popup_error_visible",
       };
-
-      enableValidation(config)
+      
 }

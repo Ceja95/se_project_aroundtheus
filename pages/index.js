@@ -1,6 +1,5 @@
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
-import { config } from "../scripts/validation.js";
 
 const object1 = {
   name: "Yosemite Valley",
@@ -87,26 +86,10 @@ function handleEsc(e) {
   }
 }
 
-function getCardElement(cardData) {
-  const cardElement = cardTemplate.cloneNode(true);
-  const cardImageEle = cardElement.querySelector(".card__image");
-  const cardDescriptionEle = cardElement.querySelector(".card__header");
-  const likeButton = cardElement.querySelector(".card__like-button");
-  const deleteButton = cardElement.querySelector(".card__delete-button");
-
-  cardImageEle.addEventListener("click", () => {
-    openPopup(imageModal);
-
-    modalImage.alt = cardData.alt;
-    modalImage.src = cardData.link;
-    imageCaption.textContent = `Picture of ${cardData.name}`;
-  });
-
-  cardDescriptionEle.textContent = cardData.name;
-  cardImageEle.src = cardData.link;
-  cardImageEle.alt = cardData.alt;
-
-  return cardElement;
+function createCard(cardData) {
+  const card = new Card(cardData, ".card-template", handleImageClick);
+  const cardElement = card.getView(cardData);
+  cardListEle.prepend(cardElement);
 }
 
 profileEditButton.addEventListener("click", () => {
@@ -139,12 +122,11 @@ addForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const name = addTitle.value;
   const link = addImage.value;
-  const cardElement = getCardElement({
+  const cardElement = createCard({
     name,
     link,
   });
   addForm.reset();
-  cardListEle.prepend(cardElement);
   closePopup(addModal);
 });
 
@@ -160,6 +142,15 @@ initialCards.forEach ((cardData) => {
   const cardElement = card.getView(cardData);
   cardListEle.prepend(cardElement);
 });
+
+  const config = {
+  formSelector: ".modal__form",
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__popup_input_type_error",
+  errorClass: "modal__popup_error_visible",
+};
 
 const testFormValidator = new FormValidator(config);
 testFormValidator.enableValidation();
