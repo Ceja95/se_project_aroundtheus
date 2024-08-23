@@ -1,6 +1,7 @@
 export default class FormValidator {
-    constructor (config) {
+    constructor (config, formEls) {
         this._config = config;
+        this._formElement = formEls;
     }
 
     _checkInputValidity(formEl, inputEl) {
@@ -40,14 +41,10 @@ export default class FormValidator {
     }
     
     enableValidation() {
-        const formEls = [...document.querySelectorAll(this._config.formSelector)];
-
-        formEls.forEach((formEl) => {
-            formEl.addEventListener("submit", (e) => {
-                e.preventDefault();
+            this._formElement.addEventListener("submit", (e) => {
+              e.preventDefault();
             });
-            this._setEventListeners(formEl);
-        });
+            this._setEventListeners();
     }
 
     toggleButtonState(inputEls, submitButton, {inactiveButtonClass}) {
