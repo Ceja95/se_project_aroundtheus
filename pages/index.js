@@ -143,5 +143,15 @@ initialCards.forEach ((cardData) => {
   cardListEle.prepend(cardElement);
 });
 
-const editFormValidator = new FormValidator(config, formEls);
+
+const config = {
+  formSelector: ".modal__form",
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__popup_input_type_error",
+  errorClass: "modal__popup_error_visible",
+};
+
+const editFormValidator = new FormValidator(config, formEl);
 editFormValidator.enableValidation();
