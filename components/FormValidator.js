@@ -6,7 +6,7 @@ export default class FormValidator {
 
     _checkInputValidity(formEl, inputEl) {
         if (!inputEl.validity.valid) {
-            this._showInputError(formEl, inputEl, this._config);
+            this._showInputError(this._formEl, inputEl, this._config);
         } else {
             this._hideInputError(formEl, inputEl, this._config);
         }
