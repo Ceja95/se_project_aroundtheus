@@ -13,14 +13,14 @@ export default class FormValidator {
     }
 
     _showInputError(formEl, inputEl, {inputErrorClass, errorClass}) {
-        const errorMessageEl = formEl.querySelector(`#${inputEl.id}-error`);
+        const errorMessageEl = this._formElement.querySelector(`#${inputEl.id}-error`);
         inputEl.classList.add(inputErrorClass);
         errorMessageEl.textContent = inputEl.validationMessage;
         errorMessageEl.classList.add(errorClass);
     }
 
     _hideInputError(formEl, inputEl, {inputErrorClass, errorClass}) {
-        const errorMessageEl = formEl.querySelector(`#${inputEl.id}-error`);
+        const errorMessageEl = this._formElement.querySelector(`#${inputEl.id}-error`);
         inputEl.classList.remove(inputErrorClass);
         errorMessageEl.textContent = "";
         errorMessageEl.classList.remove(errorClass);
@@ -29,8 +29,8 @@ export default class FormValidator {
     _setEventListeners(formEl) {
         const { inputSelector, submitButtonSelector } = this._config;
 
-        const inputEls = [...formEl.querySelectorAll(inputSelector)];
-        const submitButton = formEl.querySelector(submitButtonSelector);
+        const inputEls = [...this._formElement.querySelectorAll(inputSelector)];
+        const submitButton = this._formElement.querySelector(submitButtonSelector);
 
         inputEls.forEach((inputEl) => {
             inputEl.addEventListener("input", () => {

@@ -153,6 +153,6 @@ const config = {
   errorClass: "modal__popup_error_visible",
 };
 
-const formEl = document.querySelectorAll(".modal");
+const formEl = document.querySelector("#edit-profile-form");
 const editFormValidator = new FormValidator(config, formEl);
 editFormValidator.enableValidation();
