@@ -154,5 +154,6 @@ const config = {
 };
 
 const formEl = document.querySelector("#edit-profile-form");
-const editFormValidator = new FormValidator(config, formEl);
+const formEl2 = document.querySelector("#add-form");
+const editFormValidator = new FormValidator(config, formEl, formEl2);
 editFormValidator.enableValidation();
