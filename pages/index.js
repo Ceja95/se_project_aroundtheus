@@ -86,6 +86,12 @@ function handleEsc(e) {
   }
 }
 
+function generateCard(item) {
+
+
+  return cardElement.getView();
+}
+
 function createCard(cardData) {
   const card = new Card(cardData, ".card-template", handleImageClick);
   const cardElement = card.getView(cardData);
@@ -137,12 +143,11 @@ function handleImageClick(cardData) {
   imageCaption.textContent = `Picture of ${cardData.name}`;
 }
 
-initialCards.forEach ((cardData) => {
+initialCards.forEach((cardData) => {
   const card = new Card(cardData, ".card-template", handleImageClick);
   const cardElement = card.getView(cardData);
   cardListEle.prepend(cardElement);
 });
-
 
 const config = {
   formSelector: ".modal__form",
@@ -155,5 +160,7 @@ const config = {
 
 const formEl = document.querySelector("#edit-profile-form");
 const formEl2 = document.querySelector("#add-form");
-const editFormValidator = new FormValidator(config, formEl, formEl2);
+const editFormValidator = new FormValidator(config, formEl);
+const addFormValidator = new FormValidator(config, formEl2);
 editFormValidator.enableValidation();
+addFormValidator.enableValidation();

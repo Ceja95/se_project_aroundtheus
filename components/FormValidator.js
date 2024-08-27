@@ -1,10 +1,10 @@
 export default class FormValidator {
-    constructor (config, formEl, formEl2) {
+    constructor (config, formEl) {
         this._config = config;
-        this._formElement = formEl, formEl2;
+        this._formElement = formEl;
     }
 
-    _checkInputValidity(formEl, formEl2, inputEl) {
+    _checkInputValidity(formEl, inputEl) {
         if (!inputEl.validity.valid) {
             this._showInputError(this._formElement, inputEl, this._config);
         } else {
@@ -12,7 +12,7 @@ export default class FormValidator {
         }
     }
 
-    _showInputError(formEl, formEl2, inputEl, {inputErrorClass, errorClass}) {
+    _showInputError(formEl, inputEl, {inputErrorClass, errorClass}) {
         const errorMessageEl = this._formElement.querySelector(`#${inputEl.id}-error`);
         inputEl.classList.add(inputErrorClass);
         errorMessageEl.textContent = inputEl.validationMessage;
@@ -26,7 +26,7 @@ export default class FormValidator {
         errorMessageEl.classList.remove(errorClass);
     }
 
-    _setEventListeners(formEl, formEl2) {
+    _setEventListeners(formEl) {
         const { inputSelector, submitButtonSelector } = this._config;
 
         const inputEls = [...this._formElement.querySelectorAll(inputSelector)];
