@@ -86,16 +86,13 @@ function handleEsc(e) {
   }
 }
 
-function generateCard(item) {
-
-
-  return cardElement.getView();
+function generateCard(cardData) {
+  const card = new Card(cardData, ".card-template", handleImageClick);
+  return card.getView();
 }
 
 function createCard(cardData) {
-  const card = new Card(cardData, ".card-template", handleImageClick);
-  const cardElement = card.getView(cardData);
-  cardListEle.prepend(cardElement);
+  cardListEle.prepend(generateCard(cardData));
 }
 
 profileEditButton.addEventListener("click", () => {
@@ -128,7 +125,7 @@ addForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const name = addTitle.value;
   const link = addImage.value;
-  const cardElement = createCard({
+  createCard({
     name,
     link,
   });
