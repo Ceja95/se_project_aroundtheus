@@ -99,6 +99,7 @@ profileEditButton.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
   openPopup(profileEditModal);
+
 });
 
 profileEditForm.addEventListener("submit", (e) => {
@@ -140,11 +141,7 @@ function handleImageClick(cardData) {
   imageCaption.textContent = `Picture of ${cardData.name}`;
 }
 
-initialCards.forEach((cardData) => {
-  const card = new Card(cardData, ".card-template", handleImageClick);
-  const cardElement = card.getView(cardData);
-  cardListEle.prepend(cardElement);
-});
+initialCards.forEach((cardData) => createCard(cardData));
 
 const config = {
   formSelector: ".modal__form",
