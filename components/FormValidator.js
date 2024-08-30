@@ -44,6 +44,7 @@ export default class FormValidator {
     enableValidation() {
             this._formElement.addEventListener("submit", (e) => {
               e.preventDefault();
+              this.disableButton();
             });
             this._setEventListeners();
     }
@@ -64,11 +65,12 @@ export default class FormValidator {
           submitButton.disabled = false;
         }
     }
-}
 
     disableButton() {
         this._submitButton.classList.add(this._config.inactiveButtonClass);
         this._submitButton.disabled = true;
     }
+}
+
 
    
