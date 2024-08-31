@@ -152,9 +152,8 @@ const config = {
   errorClass: "modal__popup_error_visible",
 };
 
-const formEl = document.querySelector("#edit-profile-form");
-const formEl2 = document.querySelector("#add-form");
-const editFormValidator = new FormValidator(config, formEl);
-const addFormValidator = new FormValidator(config, formEl2);
+
+const editFormValidator = new FormValidator(config, profileEditForm);
+const addFormValidator = new FormValidator(config, addForm);
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
