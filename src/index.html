@@ -14,11 +14,11 @@
 <body class="page">
     <div class="page__content">
         <header class="header page__section">
-            <img class="header__image" src="./images/aroundtheuslogo.svg" alt="around the us logo">
+            <img class="header__image" src="<%=require("./images/aroundtheuslogo.svg")%>" alt="around the us logo">
         </header>
         <main class="content">
-            <section class="profile page__section">
-                <img class="profile__image" src="./images/profile-picture.png" alt="avatar">
+            <section class="profile page__section"> 
+                <img class="profile__image" src="<%=require("./images/profile-picture.png")%>" alt="avatar">
                 <div class="profile__info">
                     <h1 class="profile__title">Jacques Cousteau</h1>
                     <button class="profile__edit-button" type="button"></button>
@@ -93,7 +93,6 @@
                 <button class="card__delete-button"></button>
             </div>
     </template>
-    <script src="./pages/index.js" type="module"></script>
 </body>
 
 </html>
