@@ -1,6 +1,7 @@
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import "../pages/index.css";
+import Section from "../components/Sections.js";
 
 
 const object1 = {
@@ -93,7 +94,7 @@ function generateCard(cardData) {
   return card.getView();
 }
 
-function createCard(cardData) {
+function renderCard(cardData) {
   cardListEle.prepend(generateCard(cardData));
 }
 
@@ -128,10 +129,12 @@ addForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const name = addTitle.value;
   const link = addImage.value;
-  createCard({
-    name,
-    link,
-  });
+  //renderCard({
+   // name,
+   // link,
+  //});
+  const card = generateCard({name, link});
+  cardListSection.addItem(card); 
   addForm.reset();
   closePopup(addModal);
 });
@@ -143,7 +146,8 @@ function handleImageClick(cardData) {
   imageCaption.textContent = `Picture of ${cardData.name}`;
 }
 
-initialCards.forEach((cardData) => createCard(cardData));
+const cardListSection = new Section ({items: initialCards, renderer: renderCard}, ".cards__list");
+cardListSection.renderItems();
 
 const config = {
   formSelector: ".modal__form",
