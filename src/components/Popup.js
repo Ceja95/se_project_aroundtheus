@@ -1,6 +1,6 @@
-export default class Popup {
-  constructor(popupSelector) {
-    this._popupSelector = popupSelector;
+export class Popup {
+  constructor({popupSelector}) {
+    this._popupElement = document.querySelector(popupSelector);
   }
   open(modal) {
     modal.classList.add("modal_opened");
@@ -14,8 +14,8 @@ export default class Popup {
   }
   _handleEscapeClose(e) {
     if (e.key === "Escape") {
-      this._popupSelector = document.querySelector(".modal_opened");
-      close(modal.this._popupSelector);
+      this._popupElement = document.querySelector(".modal_opened");
+      close(this._popupSelector);
     }
   }
   setEventListeners(e) {
@@ -26,20 +26,4 @@ export default class Popup {
       close(e.currentTarget);
     }
   }
-}
-
-class PopupWIthImage extends Popup {
-  constructor(popupSelector) {
-    super(popupSelector);
-  }
-  open(data) {
-    super.open(data);
-  }
-}
-
-class PopupWithForm extends Popup {
-  constructor(popupSelector) {
-    super(popupSelector);
-  }
-  _getInputValues() {}
 }
