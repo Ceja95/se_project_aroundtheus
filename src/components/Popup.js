@@ -20,6 +20,6 @@ export class Popup {
       this.close(this._popupElement);
     });
 
-   this._popupElement.addEventListener("keydown", this._handleEscapeClose);
+    this._popupElement.addEventListener("keydown", this._handleEscapeClose);
   }
 }

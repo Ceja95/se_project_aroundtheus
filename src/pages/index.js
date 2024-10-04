@@ -61,10 +61,10 @@ const imageModal = document.querySelector("#image-modal");
 const imageCaption = document.querySelector(".modal__caption");
 const imageClose = imageModal.querySelector(".modal__close");
 
-const addPopupForm = new PopupWithForm("#add-form", () => handleFormSubmit);
+const addPopupForm = new PopupWithForm("#add-modal", () => handleFormSubmit);
 addPopupForm.setEventListeners();
 
-const editPopupForm = new PopupWithForm("#edit-profile-form", () => handleFormSubmit);
+const editPopupForm = new PopupWithForm("#edit-modal", () => handleFormSubmit);
 editPopupForm.setEventListeners();
 
 //function closePopup(modal) {
