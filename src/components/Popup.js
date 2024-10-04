@@ -4,17 +4,16 @@ export class Popup {
   }
   open() {
     this._popupElement.classList.add("modal_opened");
-    document.removeEventListener("keydown", this._handleEscapeClose);
+    document.addEventListener("keydown", this._handleEscapeClose);
   }
   close() {
     this._popupElement.classList.remove("modal_opened");
     document.removeEventListener("keydown", this._handleEscapeClose);
-    modal.removeEventListener("mousedown", this.setEventListeners);
   }
   _handleEscapeClose(e) {
     if (e.key === "Escape") {
       this._popupElement = document.querySelector(".modal_opened");
-      close(this._popupSelector);
+      close(this._popupElement);
     }
   }
   setEventListeners(e) {
@@ -24,6 +23,5 @@ export class Popup {
     ) {
       close(e.currentTarget);
     }
-    this._popupElement.removeEventListener("mousedown", this.setEventListeners);
   }
 }
