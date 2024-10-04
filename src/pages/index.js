@@ -61,7 +61,14 @@ const imageModal = document.querySelector("#image-modal");
 const imageCaption = document.querySelector(".modal__caption");
 const imageClose = imageModal.querySelector(".modal__close");
 
+const addPopupForm = new PopupWithForm("#add-form", () => handleFormSubmit);
+addPopupForm.open();
+addPopupForm.setEventListeners();
 
+
+
+const editPopupForm = new PopupWithForm("#edit-profile-form", () => handleFormSubmit);
+editPopupForm.setEventListeners();
 
 //function closePopup(modal) {
  // modal.classList.remove("modal_opened");
@@ -142,17 +149,6 @@ function handleImageClick(cardData) {
   modalImage.src = cardData.link;
   imageCaption.textContent = `Picture of ${cardData.name}`;
 }
-
-const addPopupForm = new PopupWithForm("#add-form", () => handleFormSubmit);
-addPopupForm.open();
-addPopupForm.setEventListeners();
-
-
-
-const editPopupForm = new PopupWithForm("#edit-profile-form", () => handleFormSubmit);
-editPopupForm.setEventListeners();
-
-
 
 const cardListSection = new Section(
   { items: initialCards, renderer: renderCard },
