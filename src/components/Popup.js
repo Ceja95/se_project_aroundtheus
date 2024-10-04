@@ -21,7 +21,7 @@ export class Popup {
       this.close();
     });
     this._popupElement.addEventListener("mousedown", (e) => {
-      if (e.target.contains("modal") || e.target.contains("modal_opened")) {
+      if (e.target.classList.contains("modal") || e.target.classList.contains("modal_opened")) {
         this.close();
       }
     });
