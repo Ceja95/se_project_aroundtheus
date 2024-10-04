@@ -1,6 +1,7 @@
 export class Popup {
   constructor({popupSelector}) {
     this._popupElement = document.querySelector(popupSelector);
+    this._handleEscapeClose = this._handleEscapeClose.bind(this);
   }
   open() {
     this._popupElement.classList.add("modal_opened");
@@ -9,7 +10,6 @@ export class Popup {
   close() {
     this._popupElement.classList.remove("modal_opened");
     document.removeEventListener("keydown", this._handleEscapeClose);
-    
   }
   _handleEscapeClose(e) {
     if (e.key === "Escape") {
