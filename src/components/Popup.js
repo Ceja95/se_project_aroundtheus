@@ -12,16 +12,14 @@ export class Popup {
   }
   _handleEscapeClose(e) {
     if (e.key === "Escape") {
-      this._popupElement = document.querySelector(".modal_opened");
-      close(this._popupElement);
+      this.close(this._popupElement);
     }
   }
-  setEventListeners(e) {
-    if (
-      e.currentTarget === e.target ||
-      e.target.classList.contains("modal__close")
-    ) {
-      close(e.currentTarget);
-    }
+  setEventListeners() {
+    this._popupElement.querySelector(".modal__close").addEventListener("click", () => {
+      this.close(this._popupElement);
+    });
+
+   this._popupElement.addEventListener("keydown", this._handleEscapeClose);
   }
 }
