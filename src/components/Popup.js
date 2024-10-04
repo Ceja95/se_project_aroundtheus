@@ -7,8 +7,9 @@ export class Popup {
     document.addEventListener("keydown", this._handleEscapeClose);
   }
   close() {
-    this._popupElement.remove("modal_opened");
+    this._popupElement.classList.remove("modal_opened");
     document.removeEventListener("keydown", this._handleEscapeClose);
+    
   }
   _handleEscapeClose(e) {
     if (e.key === "Escape") {
@@ -19,7 +20,10 @@ export class Popup {
     this._popupElement.querySelector(".modal__close").addEventListener("click", () => {
       this.close();
     });
-
-    this._popupElement.addEventListener("keydown", this._handleEscapeClose);
+    this._popupElement.addEventListener("mousedown", (e) => {
+      if (e.target.contains("modal") || e.target.contains("modal_opened")) {
+        this.close();
+      }
+    });
   }
 }

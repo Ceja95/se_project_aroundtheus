@@ -61,10 +61,10 @@ const imageModal = document.querySelector("#image-modal");
 const imageCaption = document.querySelector(".modal__caption");
 const imageClose = imageModal.querySelector(".modal__close");
 
-const addPopupForm = new PopupWithForm("#add-modal", () => handleFormSubmit);
+const addPopupForm = new PopupWithForm({popupSelector: "#add-modal"}, () => handleFormSubmit);
 addPopupForm.setEventListeners();
 
-const editPopupForm = new PopupWithForm("#edit-modal", () => handleFormSubmit);
+const editPopupForm = new PopupWithForm({popupSelector: "#edit-modal"}, () => handleFormSubmit);
 editPopupForm.setEventListeners();
 
 //function closePopup(modal) {
@@ -132,12 +132,12 @@ profileAddButton.addEventListener("click", () => {
 
 addForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  const name = addTitle.value;
-  const link = addImage.value;
-  const card = generateCard({ name, link });
-  cardListSection.addItem(card);
-  addForm.reset();
-  addPopupForm.close(addModal);
+  //const name = addTitle.value;
+  //const link = addImage.value;
+ // const card = generateCard({ name, link });
+ // cardListSection.addItem(card);
+  //addForm.reset();
+  //addPopupForm.close(addModal);
 });
 
 function handleImageClick(cardData) {
