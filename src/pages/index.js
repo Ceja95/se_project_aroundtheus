@@ -2,7 +2,7 @@ import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import "../pages/index.css";
 import Section from "../components/Sections.js";
-import { PopupWithForm } from "../components/PopupWithForms.js";
+import  PopupWithForm  from "../components/PopupWithForms.js";
 
 const object1 = {
   name: "Yosemite Valley",
@@ -143,12 +143,15 @@ function handleImageClick(cardData) {
   imageCaption.textContent = `Picture of ${cardData.name}`;
 }
 
-const addPopupForm = new PopupWithForm("#add-form", () => {handleFormSubmit});
+const addPopupForm = new PopupWithForm("#add-form", () => handleFormSubmit);
+addPopupForm.open();
 addPopupForm.setEventListeners();
 
 
-const editPopupForm = new PopupWithForm("#edit-profile-form", () => {handleFormSubmit});
+
+const editPopupForm = new PopupWithForm("#edit-profile-form", () => handleFormSubmit);
 editPopupForm.setEventListeners();
+
 
 
 const cardListSection = new Section(

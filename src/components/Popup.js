@@ -24,6 +24,6 @@ export class Popup {
     ) {
       close(e.currentTarget);
     }
-    modal.removeEventListener("mousedown", this.setEventListeners);
+    this._popupElement.removeEventListener("mousedown", this.setEventListeners);
   }
 }
