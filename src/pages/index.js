@@ -61,10 +61,10 @@ const imageModal = document.querySelector("#image-modal");
 const imageCaption = document.querySelector(".modal__caption");
 const imageClose = imageModal.querySelector(".modal__close");
 
-const addPopupForm = new PopupWithForm({popupSelector: "#add-modal"}, () => handleFormSubmit);
+const addPopupForm = new PopupWithForm({popupSelector: "#add-modal"}, handleAddFormSubmit);
 addPopupForm.setEventListeners();
 
-const editPopupForm = new PopupWithForm({popupSelector: "#edit-modal"}, () => handleFormSubmit);
+const editPopupForm = new PopupWithForm({popupSelector: "#edit-modal"}, () => {});
 editPopupForm.setEventListeners();
 
 //function closePopup(modal) {
@@ -130,14 +130,21 @@ profileAddButton.addEventListener("click", () => {
   addPopupForm.open(addModal);
 });
 
-addForm.addEventListener("submit", (e) => {
+// change parameter to data
+// get rid of e.preventDefault
+function handleAddFormSubmit(e) {
   e.preventDefault();
-  //const name = addTitle.value;
-  //const link = addImage.value;
- // const card = generateCard({ name, link });
- // cardListSection.addItem(card);
-  //addForm.reset();
-  //addPopupForm.close(addModal);
+  // use the data from the arg instead of input elements .value
+  const name = addTitle.value;
+  const link = addImage.value;
+ const card = generateCard({ name, link });
+  cardListSection.addItem(card);
+  addForm.reset();
+  addPopupForm.close(addModal);
+}
+
+addForm.addEventListener("submit", (e) => {
+
 });
 
 function handleImageClick(cardData) {
