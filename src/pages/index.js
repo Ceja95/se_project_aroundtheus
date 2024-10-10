@@ -68,7 +68,7 @@ addPopupForm.setEventListeners();
 const editPopupForm = new PopupWithForm({popupSelector: "#edit-modal"}, handleEditFormSubmit);
 editPopupForm.setEventListeners();
 
-const imagePopup = new PopupWithImage({popupSelector: "#image-modal"},{popupSrc, popupAlt}, popupCap);
+const imagePopup = new PopupWithImage({popupSelector: "#image-modal"});
 imagePopup.setEventListeners();
 
 //function closePopup(modal) {
