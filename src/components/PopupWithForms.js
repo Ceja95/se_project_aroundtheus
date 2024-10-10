@@ -2,7 +2,7 @@ import { Popup } from "./Popup.js";
 
 export default class PopupWithForm extends Popup {
   constructor({ popupSelector }, handleFormSubmit) {
-    super({ popupSelector });
+    super({popupSelector});
     this._handleFormSubmit = handleFormSubmit;
     this._form = this._popupElement.querySelector(".modal__form");
     this._inputElements = this._popupElement.querySelectorAll(".modal__input"); 
@@ -14,7 +14,7 @@ export default class PopupWithForm extends Popup {
     this._inputElements.forEach((inputElement) => {
       inputValues[inputElement.name] = inputElement.value;
     });
-    return (inputValues);
+    return inputValues;
     // iterate through the list of all inputs
     //  add key/value pair to the object
     //  the keys can be name attribute

@@ -68,6 +68,8 @@ addPopupForm.setEventListeners();
 const editPopupForm = new PopupWithForm({popupSelector: "#edit-modal"}, () => {});
 editPopupForm.setEventListeners();
 
+//const imagePopup = new PopupWithImage(popupSelector,{imageSrc: ".modal__picture", imageAlt:})
+
 //function closePopup(modal) {
  // modal.classList.remove("modal_opened");
   //document.removeEventListener("keydown", handleEsc);
@@ -135,8 +137,10 @@ profileAddButton.addEventListener("click", () => {
 // get rid of e.preventDefault
 function handleAddFormSubmit(data) {
   // use the data from the arg instead of input elements .value
-  const name = addTitle.value;
-  const link = addImage.value;
+  console.log(data);
+  const name = data.value;
+  const link = data.value;
+
  const card = generateCard({ name, link });
   cardListSection.addItem(card);
   addForm.reset();
