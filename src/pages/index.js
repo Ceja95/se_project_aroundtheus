@@ -68,7 +68,7 @@ addPopupForm.setEventListeners();
 const editPopupForm = new PopupWithForm({popupSelector: "#edit-modal"}, handleEditFormSubmit);
 editPopupForm.setEventListeners();
 
-//const imagePopup = new PopupWithImage(popupSelector,{imageSrc: ".modal__picture", imageAlt:})
+//const imagePopup = new PopupWithImage(popupSelector,{imageSrc: ".modal__picture", imageAlt:}, imageCap);
 
 //function closePopup(modal) {
  // modal.classList.remove("modal_opened");
@@ -112,16 +112,10 @@ profileEditButton.addEventListener("click", () => {
 });
 
 function handleEditFormSubmit(data) {
-  profileTitle.textContent = data.value;
-  profileDescription.textContent = data.value;
-}
-
-profileEditForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  profileTitle.textContent = profileTitleInput.value;
-  profileDescription.textContent = profileDescriptionInput.value;
+  profileTitle.textContent = data.name;
+  profileDescription.textContent = data.description;
   editPopupForm.close(profileEditModal);
-});
+}
 
 const profileAddButton = document.querySelector(".profile__add-button");
 const addButton = document.querySelector("#add-button");
@@ -136,13 +130,10 @@ profileAddButton.addEventListener("click", () => {
   addPopupForm.open(addModal);
 });
 
-// change parameter to data
-// get rid of e.preventDefault
+
 function handleAddFormSubmit(data) {
-  // use the data from the arg instead of input elements .value
-  console.log(data);
-  const name = data.value;
-  const link = data.value;
+  const name = data.name;
+  const link = data.link;
 
  const card = generateCard({ name, link });
   cardListSection.addItem(card);

@@ -5,12 +5,12 @@ export default class PopupWIthImage extends Popup {
       super({popupSelector});
       this._imageSrc = document.querySelector(imageSrc);
       this._imageAlt = document.querySelector(imageAlt);
-      this._imageCap = imageCap;
+      this._imageCap = imageCap = `Picture of ${cardData.name}`;
     }
     open(data) {
+      super.open();
       data.imageSrc;
       data.imageAlt;
       data.imageCap;
-      super.open();
     }
   }
