@@ -65,7 +65,7 @@ const imageClose = imageModal.querySelector(".modal__close");
 const addPopupForm = new PopupWithForm({popupSelector: "#add-modal"}, handleAddFormSubmit);
 addPopupForm.setEventListeners();
 
-const editPopupForm = new PopupWithForm({popupSelector: "#edit-modal"}, () => {});
+const editPopupForm = new PopupWithForm({popupSelector: "#edit-modal"}, handleEditFormSubmit);
 editPopupForm.setEventListeners();
 
 //const imagePopup = new PopupWithImage(popupSelector,{imageSrc: ".modal__picture", imageAlt:})
@@ -108,10 +108,13 @@ function renderCard(cardData) {
 }
 
 profileEditButton.addEventListener("click", () => {
-  profileTitleInput.value = profileTitle.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
   editPopupForm.open(profileEditModal);
 });
+
+function handleEditFormSubmit(data) {
+  profileTitle.textContent = data.value;
+  profileDescription.textContent = data.value;
+}
 
 profileEditForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -147,9 +150,6 @@ function handleAddFormSubmit(data) {
   addPopupForm.close(addModal);
 }
 
-addForm.addEventListener("submit", (e) => {
-
-});
 
 function handleImageClick(cardData) {
   openPopup(imageModal);
