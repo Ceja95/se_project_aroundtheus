@@ -68,7 +68,8 @@ addPopupForm.setEventListeners();
 const editPopupForm = new PopupWithForm({popupSelector: "#edit-modal"}, handleEditFormSubmit);
 editPopupForm.setEventListeners();
 
-//const imagePopup = new PopupWithImage({popupSelector: "#image-modal"},{imageSrc, imageAlt}, imageCap, handleImageClick);
+const imagePopup = new PopupWithImage({popupSelector: "#image-modal"},{popupSrc, popupAlt}, popupCap);
+imagePopup.setEventListeners();
 
 //function closePopup(modal) {
  // modal.classList.remove("modal_opened");
@@ -135,18 +136,19 @@ function handleAddFormSubmit(data) {
   const name = data.name;
   const link = data.link;
 
- const card = generateCard({ name, link });
+  const card = generateCard({ name, link });
   cardListSection.addItem(card);
   addForm.reset();
   addPopupForm.close(addModal);
 }
 
-//function handleImageClick(cardData) {
+function handleImageClick(cardData) {
+  imagePopup.open(cardData);
   //openPopup(imageModal);
   //modalImage.alt = cardData.alt;
   //modalImage.src = cardData.link;
   //imageCaption.textContent = `Picture of ${cardData.name}`;
-//}
+}
 
 const cardListSection = new Section(
   { items: initialCards, renderer: renderCard },
