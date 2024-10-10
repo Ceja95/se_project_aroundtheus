@@ -68,7 +68,7 @@ addPopupForm.setEventListeners();
 const editPopupForm = new PopupWithForm({popupSelector: "#edit-modal"}, handleEditFormSubmit);
 editPopupForm.setEventListeners();
 
-//const imagePopup = new PopupWithImage(popupSelector,{imageSrc: ".modal__picture", imageAlt:}, imageCap);
+//const imagePopup = new PopupWithImage(popupSelector,{imageSrc, imageAlt}, imageCap);
 
 //function closePopup(modal) {
  // modal.classList.remove("modal_opened");
