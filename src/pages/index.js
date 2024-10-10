@@ -68,7 +68,7 @@ addPopupForm.setEventListeners();
 const editPopupForm = new PopupWithForm({popupSelector: "#edit-modal"}, handleEditFormSubmit);
 editPopupForm.setEventListeners();
 
-//const imagePopup = new PopupWithImage(popupSelector,{imageSrc, imageAlt}, imageCap);
+const imagePopup = new PopupWithImage({popupSelector: "#image-modal"},{imageSrc, imageAlt}, imageCap);
 
 //function closePopup(modal) {
  // modal.classList.remove("modal_opened");
@@ -141,9 +141,10 @@ function handleAddFormSubmit(data) {
   addPopupForm.close(addModal);
 }
 
+function handleImageClick(data) {
+  imagePopup.open(imageModal);
 
-function handleImageClick(cardData) {
-  openPopup(imageModal);
+  //openPopup(imageModal);
   modalImage.alt = cardData.alt;
   modalImage.src = cardData.link;
   imageCaption.textContent = `Picture of ${cardData.name}`;
