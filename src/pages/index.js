@@ -3,6 +3,7 @@ import FormValidator from "../components/FormValidator.js";
 import "../pages/index.css";
 import Section from "../components/Sections.js";
 import  PopupWithForm  from "../components/PopupWithForms.js";
+import PopupWithImage from "../components/PopupWithImage.js";
 
 const object1 = {
   name: "Yosemite Valley",
@@ -132,8 +133,7 @@ profileAddButton.addEventListener("click", () => {
 
 // change parameter to data
 // get rid of e.preventDefault
-function handleAddFormSubmit(e) {
-  e.preventDefault();
+function handleAddFormSubmit(data) {
   // use the data from the arg instead of input elements .value
   const name = addTitle.value;
   const link = addImage.value;

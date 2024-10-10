@@ -10,7 +10,7 @@ export default class PopupWIthImage extends Popup {
     open(data) {
       data.imageSrc;
       data.imageAlt;
-      data.imageCap
+      data.imageCap;
       super.open();
     }
   }
