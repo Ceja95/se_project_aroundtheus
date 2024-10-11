@@ -4,44 +4,9 @@ import "../pages/index.css";
 import Section from "../components/Sections.js";
 import  PopupWithForm  from "../components/PopupWithForms.js";
 import PopupWithImage from "../components/PopupWithImage.js";
+import  {object1, object2, object3, object4, object5, object6, initialCards} from "../utils/constants.js";
 
-const object1 = {
-  name: "Yosemite Valley",
-  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-  alt: "picture of yosemite valley",
-};
 
-const object2 = {
-  name: "Lake Louise",
-  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
-  alt: "picture of lake louise",
-};
-
-const object3 = {
-  name: "Bald Mountains",
-  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
-  alt: "picture of bald mountians",
-};
-
-const object4 = {
-  name: "Latemar",
-  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
-  alt: "picture of latemar",
-};
-
-const object5 = {
-  name: "Vanoise National Park",
-  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
-  alt: "picture of vanoise national park",
-};
-
-const object6 = {
-  name: "Lago di Braies",
-  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
-  alt: "picture of lago di braies",
-};
-
-const initialCards = [object1, object2, object3, object4, object5, object6];
 
 const profileEditButton = document.querySelector(".profile__edit-button");
 const profileEditModal = document.querySelector("#edit-modal");
