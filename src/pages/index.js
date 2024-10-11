@@ -35,7 +35,7 @@ const imageModal = document.querySelector("#image-modal");
 const imageCaption = document.querySelector(".modal__caption");
 const imageClose = imageModal.querySelector(".modal__close");
 
-const usersInfo = new UserInfo({nameElement: "#profile-name-input", jobElement: "#profile-description-input"});
+const usersInfo = new UserInfo({nameElement: ".profile__title", jobElement: ".profile__paragraph"});
 
 const addPopupForm = new PopupWithForm(
   { popupSelector: "#add-modal" },
