@@ -35,4 +35,13 @@ export const object1 = {
   };
   
   export const initialCards = [object1, object2, object3, object4, object5, object6];
+
+  export const config = {
+    formSelector: ".modal__form",
+    inputSelector: ".modal__input",
+    submitButtonSelector: ".modal__button",
+    inactiveButtonClass: "modal__button_disabled",
+    inputErrorClass: "modal__popup_input_type_error",
+    errorClass: "modal__popup_error_visible",
+  };
   
