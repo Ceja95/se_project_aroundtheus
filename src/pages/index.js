@@ -4,7 +4,8 @@ import "../pages/index.css";
 import Section from "../components/Sections.js";
 import  PopupWithForm  from "../components/PopupWithForms.js";
 import PopupWithImage from "../components/PopupWithImage.js";
-import  {object1, object2, object3, object4, object5, object6, initialCards} from "../utils/constants.js";
+//import UserInfo from "../components/UserInfo.js";
+import {object1, object2, object3, object4, object5, object6, initialCards} from "../utils/Constants.js";
 
 
 
@@ -100,8 +101,8 @@ profileAddButton.addEventListener("click", () => {
 function handleAddFormSubmit(data) {
   const name = data.name;
   const link = data.link;
-
   const card = generateCard({ name, link });
+  
   cardListSection.addItem(card);
   addForm.reset();
   addPopupForm.close(addModal);
