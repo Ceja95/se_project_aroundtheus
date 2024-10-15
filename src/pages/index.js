@@ -58,7 +58,7 @@ function generateCard(cardData) {
 }
 
 function renderCard(cardData) {
-  cardListEle.prepend(generateCard(cardData));
+  cardListSection.addItem(generateCard(cardData));
 }
 
 profileEditButton.addEventListener("click", () => {
