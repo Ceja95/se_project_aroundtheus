@@ -62,12 +62,12 @@ function renderCard(cardData) {
 }
 
 profileEditButton.addEventListener("click", () => {
-  editPopupForm.open(profileEditModal);
+  editPopupForm.open();
 });
 
 function handleEditFormSubmit(data) {
   usersInfo.setUserInfo(data);
-  editPopupForm.close(profileEditModal);
+  editPopupForm.close();
 }
 
 const profileAddButton = document.querySelector(".profile__add-button");
@@ -80,7 +80,7 @@ const addImage = document.querySelector("#profile-image-input");
 const addForm = document.querySelector("#add-form");
 
 profileAddButton.addEventListener("click", () => {
-  addPopupForm.open(addModal);
+  addPopupForm.open();
 });
 
 function handleAddFormSubmit(data) {
@@ -90,7 +90,7 @@ function handleAddFormSubmit(data) {
 
   cardListSection.addItem(card);
   addForm.reset();
-  addPopupForm.close(addModal);
+  addPopupForm.close();
 }
 
 function handleImageClick(cardData) {
