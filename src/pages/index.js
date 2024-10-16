@@ -62,6 +62,11 @@ function renderCard(cardData) {
 }
 
 profileEditButton.addEventListener("click", () => {
+  const currentUserInfo = usersInfo.getUserInfo();
+  
+  profileTitleInput.value = currentUserInfo.name;
+  profileDescriptionInput.value = currentUserInfo.description;
+
   editPopupForm.open();
 });
 
