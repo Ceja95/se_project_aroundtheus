@@ -1,4 +1,4 @@
-class Api {
+export default class Api {
     constructor(options) {
         this._baseUrl = options.baseUrl;
         this._headers = options.headers;
@@ -38,14 +38,24 @@ class Api {
         }))
     }
 
-    profileEdit() {
+    profileEdit(name, about) {
         return fetch(`${this._baseUrl}/user/me`, this._headers, {
         method: "PATCH",
         headers: this._headers,
         body: JSON.stringify({
-            name: Jacques Cousteau,
-            about: Explorer
+            name: name,
+            about: about
         })         
-    })
+    });
+    }
+
+    addNewCard(name, link) {
+        return fetch(`${this._baseUrl}/cards`, {headers: this._headers}, {
+            method: "POST",
+            body: {
+                name: name,
+                link: link
+            } 
+        });
     }
 }

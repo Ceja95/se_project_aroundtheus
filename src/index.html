@@ -14,11 +14,11 @@
 <body class="page">
     <div class="page__content">
         <header class="header page__section">
-            <img class="header__image" src="<%=require("./images/aroundtheuslogo.svg")%>" alt="around the us logo">
+            <img class="header__image" src="<%=require(" ./images/aroundtheuslogo.svg")%>" alt="around the us logo">
         </header>
         <main class="content">
-            <section class="profile page__section"> 
-                <img class="profile__image" src="<%=require("./images/profile-picture.png")%>" alt="avatar">
+            <section class="profile page__section">
+                <img class="profile__image" src="<%=require(" ./images/profile-picture.png")%>" alt="avatar">
                 <div class="profile__info">
                     <h1 class="profile__title">Jacques Cousteau</h1>
                     <button class="profile__edit-button" type="button"></button>
@@ -43,13 +43,13 @@
                 <button type="button" class="modal__close"></button>
                 <p class="modal__header">Edit Profile</p>
                 <label class="modal__label" for="add-name">
-                    <input class="modal__input" id="profile-name-input" type="text" placeholder="Name" name="name" minlength="2"
-                        maxlength="40" required>
+                    <input class="modal__input" id="profile-name-input" type="text" placeholder="Name" name="name"
+                        minlength="2" maxlength="40" required>
                     <span class="modal__popup-error" id="profile-name-input-error"></span>
                 </label>
                 <label class="modal__label" for="add-description">
-                    <input class="modal__input" id="profile-description-input" type="text" placeholder="Description" name="description"
-                        minlength="2" maxlength="200" required>
+                    <input class="modal__input" id="profile-description-input" type="text" placeholder="Description"
+                        name="description" minlength="2" maxlength="200" required>
                     <span class="modal__popup-error" id="profile-description-input-error"></span>
                 </label>
                 <button class="modal__button modal__button_disabled" disabled>Save</button>
@@ -63,12 +63,13 @@
                 <button type="button" class="modal__close" id="add-close"></button>
                 <p class="modal__header" id="add-header">New place</p>
                 <label class="modal__label" for="add-title">
-                    <input class="modal__input" id="profile-title-input" type="text" placeholder="Title" name="name" minlength="1"
-                        maxlength="30" required>
+                    <input class="modal__input" id="profile-title-input" type="text" placeholder="Title" name="name"
+                        minlength="1" maxlength="30" required>
                     <span class="modal__popup-error" id="profile-title-input-error"></span>
                 </label>
                 <label class="modal__label" for="add-image">
-                    <input class="modal__input" id="profile-image-input" type="url" placeholder="Image Url" name="link" required>
+                    <input class="modal__input" id="profile-image-input" type="url" placeholder="Image Url" name="link"
+                        required>
                     <span class="modal__popup-error" id="profile-image-input-error"></span>
                 </label>
                 <button class="modal__button modal__button_disabled" id="add-button" disabled>Create</button>
@@ -81,6 +82,20 @@
             <button class="modal__close"></button>
             <img src="" alt="" class="modal__picture">
             <p class="modal__caption"></p>
+        </div>
+    </div>
+
+    <div class="modal">
+        <div class="modal__container" id="confirm-picture-modal">
+            <form class="modal__form" id="confirm-form">
+                <button class="modal__close" id="picture-close"></button>
+                <p class="modal__header">Are your sure?</p>
+                <label class="modal__label" for="picture-title">
+                    <input class="modal__input" id="confirm-picture-input" type="text" name="picture" required>
+                    <span class="modal__popup-error" id="confirm-profile-image"></span>
+                </label>
+                <button class="modal__button modal__button_disabled" id="confirm-button">Yes</button>
+            </form>
         </div>
     </div>
 
