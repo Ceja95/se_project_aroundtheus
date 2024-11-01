@@ -24,6 +24,8 @@ class Api {
         return Promise.all([getUserInfo(), getView()]);
     }
 
+    //left off on 1. Loading user information from the server 
+
     const api = new Api({
         baseUrl: "https://around-api.en.tripleten-services.com/v1",
         headers: {
