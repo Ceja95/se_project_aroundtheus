@@ -112,3 +112,11 @@ const editFormValidator = new FormValidator(config, profileEditForm);
 const addFormValidator = new FormValidator(config, addForm);
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
+
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+      authorization: "d43d74f4-d8b7-495e-a8b5-9bce636b1f9e",
+      "Content-Type": "application/json"
+  }
+});

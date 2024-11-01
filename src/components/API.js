@@ -1,13 +1,12 @@
 class Api {
     constructor(options) {
-        this._options = options;
+        this._baseUrl = options.baseUrl;
+        this._headers = options.headers;
     }
 
     getInitialCards() {
-        return fetch("https://around-api.en.tripleten-services.com/v1/cards", {
-            headers: {
-            authorization: "d43d74f4-d8b7-495e-a8b5-9bce636b1f9e"
-            }
+        return fetch(`${this._baseUrl}/cards`, {
+            headers: this._headers
         })
         .then(res => {
             if(res.ok) {
@@ -24,13 +23,20 @@ class Api {
         return Promise.all([getUserInfo(), getView()]);
     }
 
-    //left off on 1. Loading user information from the server 
+    userInfo() {
+        return fetch(`${this._baseUrl}/users/me`, {
+        "about": "Placeholder description",
+        "avatar": "https://practicum-content.s3.amazonaws.com/resources/default-avatar_1704458546.png",
+        "name": "Placeholder name",
+        "_id": "d43d74f4-d8b7-495e-a8b5-9bce636b1f9e"
+        });
+    }
 
-    const api = new Api({
-        baseUrl: "https://around-api.en.tripleten-services.com/v1",
-        headers: {
-            authorization: "d43d74f4-d8b7-495e-a8b5-9bce636b1f9e",
-            "Content-Type": "application/json"
-        }
-    });
+    cardLoader() {
+        return fetch(`${this._baseUrl}/cards`, this._headers)
+        .then((res) => res.json())
+        .catch((err => {
+            console.error(err);
+        }))
+    }
 }
