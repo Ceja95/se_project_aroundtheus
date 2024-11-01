@@ -5,9 +5,7 @@ class Api {
     }
 
     getInitialCards() {
-        return fetch(`${this._baseUrl}/cards`, {
-            headers: this._headers
-        })
+        return fetch(`${this._baseUrl}/cards`, {headers: this._headers})
         .then(res => {
             if(res.ok) {
                 return res.json();
@@ -24,7 +22,7 @@ class Api {
     }
 
     userInfo() {
-        return fetch(`${this._baseUrl}/users/me`, {
+        return fetch(`${this._baseUrl}/users/me`, {headers: this._headers}, {
         "about": "Placeholder description",
         "avatar": "https://practicum-content.s3.amazonaws.com/resources/default-avatar_1704458546.png",
         "name": "Placeholder name",
@@ -33,10 +31,21 @@ class Api {
     }
 
     cardLoader() {
-        return fetch(`${this._baseUrl}/cards`, this._headers)
+        return fetch(`${this._baseUrl}/cards`, {headers: this._headers})
         .then((res) => res.json())
         .catch((err => {
             console.error(err);
         }))
+    }
+
+    profileEdit() {
+        return fetch(`${this._baseUrl}/user/me`, this._headers, {
+        method: "PATCH",
+        headers: this._headers,
+        body: JSON.stringify({
+            name: Jacques Cousteau,
+            about: Explorer
+        })         
+    })
     }
 }
