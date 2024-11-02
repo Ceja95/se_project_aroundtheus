@@ -11,8 +11,8 @@
   margin-right: 24px;
 }
 
-.profile__image:hover{
-  background-image: url("../images/pencil.png") center no-repeat;
+.profile__image + .profile__avatar-button:hover{
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .profile__avatar-container {
@@ -29,7 +29,7 @@
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: transparent;
   color: white;
   border: none;
   border-radius: 5px;
