@@ -29,11 +29,11 @@
   border-radius: 5px;
   padding: 10px 20px;
   cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.8);
-  background-image: url("../images/pencil.png") center no-repeat;
+  background: url("../images/pencil.png") center no-repeat;
 }
 
 .profile__avatar-button:hover{
+  background-color: rgba(0, 0, 0, 0.8);
   opacity: 1;
 }
 

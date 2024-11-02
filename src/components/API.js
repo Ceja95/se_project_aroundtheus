@@ -58,4 +58,8 @@ export default class Api {
             } 
         });
     }
+
+    deleteCard() {
+        
+    }
 }
