@@ -15,7 +15,7 @@ import {
   initialCards,
 } from "../utils/Constants.js";
 import { config } from "../utils/Constants.js";
-//import Api from "../components/API.js";
+import Api from "../components/API.js";
 
 const profileEditButton = document.querySelector(".profile__edit-button");
 const profileEditModal = document.querySelector("#edit-modal");
