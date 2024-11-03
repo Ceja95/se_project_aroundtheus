@@ -39,7 +39,8 @@ export default class Api {
     }
 
     profileEdit(name, about) {
-        return fetch(`${this._baseUrl}/user/me`, this._headers, {
+        return fetch(`${this._baseUrl}/user/me`, {
+        headers: this._headers,
         method: "PATCH",
         headers: this._headers,
         body: JSON.stringify({
@@ -50,7 +51,8 @@ export default class Api {
     }
 
     addNewCard(name, link) {
-        return fetch(`${this._baseUrl}/cards`, {headers: this._headers}, {
+        return fetch(`${this._baseUrl}/cards`, {
+            headers: this._headers,
             method: "POST",
             body: {
                 name: name,
@@ -60,25 +62,29 @@ export default class Api {
     }
 
     deleteCard() {
-       return fetch(`${this._baseUrl}/cards/cardId`, {headers: this._headers},{
+       return fetch(`${this._baseUrl}/cards/cardId`, {
+        headers: this._headers,
         method: "DELETE"
        })
     }
     
     addLikes() {
-        return fetch(`${this._baseUrl}/cards/cardId/likes`, {headers: this._headers}, {
+        return fetch(`${this._baseUrl}/cards/cardId/likes`, {
+            headers: this._headers,
             method: "PUT"
         })
     }
 
     removeLikes() {
-        return fetch(`${this._baseUrl}/cards/cardId/likes`, {headers: this._headers}, {
+        return fetch(`${this._baseUrl}/cards/cardId/likes`, {
+            headers: this._headers,
             method: "DELETE"
         })
     }
 
     profilePicture() {
-        return fetch(`${this._baseUrl}/users/me/avatar`, {headers: this._headers}, {
+        return fetch(`${this._baseUrl}/users/me/avatar`, { 
+            headers: this._headers,
             method: "PATCH",
             body: JSON.stringify({avatar})
         })
