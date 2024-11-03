@@ -60,6 +60,31 @@ export default class Api {
     }
 
     deleteCard() {
-        
+       return fetch(`${this._baseUrl}/cards/cardId`, {headers: this._headers},{
+        method: "DELETE"
+       })
+    }
+    
+    addLikes() {
+        return fetch(`${this._baseUrl}/cards/cardId/likes`, {headers: this._headers}, {
+            method: "PUT"
+        })
+    }
+
+    removeLikes() {
+        return fetch(`${this._baseUrl}/cards/cardId/likes`, {headers: this._headers}, {
+            method: "DELETE"
+        })
+    }
+
+    profilePicture() {
+        return fetch(`${this._baseUrl}/users/me/avatar`, {headers: this._headers}, {
+            method: "PATCH",
+            body: JSON.stringify({avatar})
+        })
+        .then((res => res.json()))
+        .catch((err => {
+            console.error(err);
+        }))
     }
 }
