@@ -21,8 +21,24 @@ export default class Card {
     this._cardElement
       .querySelector(".card__delete-button")
       .addEventListener("click", () => {
-        this._handleDeleteCard();
+        this._showConfirmModal();
       });
+  }
+
+  _showConfirmModal() {
+    const confirmModal = document.querySelector("#confirm-modal");
+    modal.style.display = "block";
+
+    document.querySelector("#confirm-button").addEventListener("click", () => {
+      this._handleDeleteCard();
+      const confirmModal = document.querySelector("#confirm-modal");
+      modal.style.display = "none";
+    });
+
+    document.querySelector("#confirm-close").addEventListener("click", () => {
+      const confirmModal = document.querySelector("#confirm-modal");
+      modal.style.display = "none";
+    });
   }
 
   _handleLikeIcon() {
