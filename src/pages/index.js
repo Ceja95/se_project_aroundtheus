@@ -4,6 +4,7 @@ import "../pages/index.css";
 import Section from "../components/Sections.js";
 import PopupWithForm from "../components/PopupWithForms.js";
 import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithConfirm from "./components/PopupWithConfirm.js";
 import UserInfo from "../components/UserInfo.js";
 import {
   object1,
@@ -50,11 +51,9 @@ const editPopupForm = new PopupWithForm(
 );
 editPopupForm.setEventListeners();
 
-const confirmPopupForm = new PopupWithForm(
-  { popupSelector: "#confirm-modal"},
-  confirmModalDelete
-);
-confirmPopupForm.setEventListeners;
+const confirmDeleteForm = new PopupWithConfirm(
+  { popupSelector: "#confirm-modal" }
+)
 
 const imagePopup = new PopupWithImage({ popupSelector: "#image-modal" });
 imagePopup.setEventListeners();
