@@ -26,15 +26,15 @@ export default class Card {
   }
 
   _showConfirmModal() {
-    const modal = document.querySelector("#confirm-modal");
+    const modal = document.getElementById("confirm-modal");
     modal.style.display = "block";
 
-    document.querySelector("#confirm-button").addEventListener("click", () => {
+    document.getElementById("confirm-button").addEventListener("click", () => {
       this._handleDeleteCard();
       modal.style.display = "none";
     });
 
-    document.querySelector("#confirm-close").addEventListener("click", () => {
+    document.getElementById("confirm-close").addEventListener("click", () => {
       modal.style.display = "none";
     });
   }
