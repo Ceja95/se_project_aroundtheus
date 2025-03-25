@@ -1,10 +1,9 @@
-import PopupWithForm from "./PopupWithForms";
+import PopupWithForm from "./PopupWithForms.js";
 
-export default class ConfirmDeletePopup extends PopupWithForm {
+export default class PopupWithConfirm extends PopupWithForm {
     constructor(popupSelector, handleConfirmAction) {
-        super({popupSelector, handleConfirmAction});
+        super(popupSelector, handleConfirmAction);
         this._handleConfirmAction = handleConfirmAction;
-        console.log(popupSelector);
     }
 
     open(itemToDelete) {

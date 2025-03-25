@@ -1,8 +1,9 @@
 export default class Card {
-  constructor(cardData, cardSelector, handleImageClick) {
+  constructor(cardData, cardSelector, handleImageClick, confirmDeletePopup) {
     this._cardData = cardData;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
+    this._confirmDeletePopup = confirmDeletePopup;
   }
 
   _setEventListeners() {
@@ -26,19 +27,7 @@ export default class Card {
   }
 
   _showConfirmModal() {
-    const modal = document.getElementById("confirm-modal") 
-    modal.style.display = "block";
-
-    document.getElementById("confirm-button").addEventListener("click", () => {
-      this._handleDeleteCard();
-      const modal = document.getElementById("confirm-modal")
-      modal.style.display = "none";
-    });
-
-    document.getElementById("confirm-close").addEventListener("click", () => {
-      const modal = document.getElementById("confirm-modal")
-      modal.style.display = "none";
-    });
+    this._confirmDeletePopup.open(this);
   }
 
   _handleLikeIcon() {
@@ -47,6 +36,10 @@ export default class Card {
 
   _handleDeleteCard() {
     this._cardElement.remove();
+  }
+
+  handleDeleteCard() {
+    this._handleDeleteCard();
   }
 
   getView() {

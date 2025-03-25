@@ -4,7 +4,6 @@ import "../pages/index.css";
 import Section from "../components/Sections.js";
 import PopupWithForm from "../components/PopupWithForms.js";
 import PopupWithImage from "../components/PopupWithImage.js";
-import PopupWithConfirm from "./components/PopupWithConfirm.js";
 import UserInfo from "../components/UserInfo.js";
 import {
   object1,
@@ -17,6 +16,7 @@ import {
 } from "../utils/Constants.js";
 import { config } from "../utils/Constants.js";
 import Api from "../components/API.js";
+import PopupWithConfirm from "../components/PopupwithConfirm.js";
 
 const profileEditButton = document.querySelector(".profile__edit-button");
 const profileEditModal = document.querySelector("#edit-modal");
@@ -51,9 +51,14 @@ const editPopupForm = new PopupWithForm(
 );
 editPopupForm.setEventListeners();
 
-const confirmDeleteForm = new PopupWithConfirm(
-  { popupSelector: "#confirm-modal" }
+const confirmDelete = new PopupWithConfirm(
+  { popupSelector: "#confirm-modal" },
+  (itemToDelete) => {
+    console.log("deleting", itemToDelete);
+    itemToDelete.handleDeleteCard();
+  }
 )
+confirmDelete.setEventListeners();
 
 const imagePopup = new PopupWithImage({ popupSelector: "#image-modal" });
 imagePopup.setEventListeners();
