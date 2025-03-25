@@ -26,17 +26,15 @@ export default class Card {
   }
 
   _showConfirmModal() {
-    this._confirmModal = this._cardElement.querySelector("#confirm-modal");
+    const modal = document.querySelector("#confirm-modal");
     modal.style.display = "block";
 
-    this._cardElement.querySelector("#confirm-button").addEventListener("click", () => {
+    document.querySelector("#confirm-button").addEventListener("click", () => {
       this._handleDeleteCard();
-      this._confirmModal;
       modal.style.display = "none";
     });
 
-    this._cardElement.querySelector("#confirm-close").addEventListener("click", () => {
-      this._confirmModal;
+    document.querySelector("#confirm-close").addEventListener("click", () => {
       modal.style.display = "none";
     });
   }
