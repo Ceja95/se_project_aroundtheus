@@ -36,7 +36,7 @@ export default class Card {
     });
 
     document.getElementById("confirm-close").addEventListener("click", () => {
-      const modal = document.getElementById("confirm- modal")
+      const modal = document.getElementById("confirm-modal")
       modal.style.display = "none";
     });
   }
