@@ -51,13 +51,6 @@ const editPopupForm = new PopupWithForm(
 );
 editPopupForm.setEventListeners();
 
-const confirmDelete = new PopupWithConfirm("#confirm-modal",
-  (itemToDelete) => {
-    console.log("deleting", itemToDelete);
-    itemToDelete.handleDeleteCard();
-  });
-confirmDelete.setEventListeners();
-
 const imagePopup = new PopupWithImage({ popupSelector: "#image-modal" });
 imagePopup.setEventListeners();
 
@@ -129,3 +122,10 @@ const api = new Api({
       "Content-Type": "application/json"
   }
 });
+
+const confirmDelete = new PopupWithConfirm("#confirm-modal",
+  (itemToDelete) => {
+    console.log("deleting", itemToDelete);
+    itemToDelete.handleDeleteCard();
+  });
+confirmDelete.setEventListeners();
