@@ -52,8 +52,9 @@ editPopupForm.setEventListeners();
 
 const confirmPopupForm = new PopupWithForm(
   { popupSelector: "#confirm-modal"},
-  
+  confirmModalDelete
 );
+confirmPopupForm.setEventListeners;
 
 const imagePopup = new PopupWithImage({ popupSelector: "#image-modal" });
 imagePopup.setEventListeners();

@@ -31,7 +31,7 @@ export default class Card {
 
     document.getElementById("confirm-button").addEventListener("click", () => {
       this._handleDeleteCard();
-      const modal = document.getElementById("confirm- modal")
+      const modal = document.getElementById("confirm-modal")
       modal.style.display = "none";
     });
 
