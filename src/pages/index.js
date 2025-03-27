@@ -17,6 +17,7 @@ import {
 import { config } from "../utils/Constants.js";
 import Api from "../components/API.js";
 import PopupWithConfirm from "../components/PopupwithConfirm.js";
+import ProfilePicture from "../components/ProfilePicture.js";
 
 const profileEditButton = document.querySelector(".profile__edit-button");
 const profileEditModal = document.querySelector("#edit-modal");
@@ -38,6 +39,11 @@ const imageCaption = document.querySelector(".modal__caption");
 const imageClose = imageModal.querySelector(".modal__close");
 
 const usersInfo = new UserInfo({nameElement: ".profile__title", jobElement: ".profile__paragraph"});
+
+const changePicture = new ProfilePicture(
+  { popupSelector: "#picture-modal" }, { profilePicture: "#picture-modal" }
+);
+changePicture.setEventListeners();
 
 const addPopupForm = new PopupWithForm(
   { popupSelector: "#add-modal" },
