@@ -24,15 +24,13 @@ export default class ProfilePicture extends PopupWithForm{
 
     getProfileInfo(){
         return {
-            link: 
-            alt:
+            link: this._profilePicture.src,
+            alt:  this.profileAlt.textContent
         }
     }
 
     setProfileInfo(){
-        return {
-            link:
-            alt:
-        }
+        this._profilePicture.src = data.link;
+        this.profileAlt.textContent = data.alt;
     }
 }
