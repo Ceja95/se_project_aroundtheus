@@ -54,8 +54,15 @@ editPopupForm.setEventListeners();
 const imagePopup = new PopupWithImage({ popupSelector: "#image-modal" });
 imagePopup.setEventListeners();
 
+const confirmDelete = new PopupWithConfirm({popupSelector: "#confirm-modal"},
+  (itemToDelete) => {
+    console.log("deleting", itemToDelete);
+    itemToDelete.handleDeleteCard();
+  });
+confirmDelete.setEventListeners();
+
 function generateCard(cardData) {
-  const card = new Card(cardData, ".card-template", handleImageClick);
+  const card = new Card(cardData, ".card-template", handleImageClick, confirmDelete);
   return card.getView();
 }
 
@@ -122,10 +129,3 @@ const api = new Api({
       "Content-Type": "application/json"
   }
 });
-
-const confirmDelete = new PopupWithConfirm("#confirm-modal",
-  (itemToDelete) => {
-    console.log("deleting", itemToDelete);
-    itemToDelete.handleDeleteCard();
-  });
-confirmDelete.setEventListeners();
