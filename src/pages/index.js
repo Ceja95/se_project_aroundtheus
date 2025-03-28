@@ -38,20 +38,12 @@ const imageCaption = document.querySelector(".modal__caption");
 const imageClose = imageModal.querySelector(".modal__close");
 
 const avatarButton = document.querySelector(".profile__avatar-button");
-const pictureUrlInput = document.querySelector(".picture-modal-input");
 
 const usersInfo = new UserInfo({nameElement: ".profile__title", jobElement: ".profile__paragraph", avatarElement: "#picture-modal-input"});
 
 const handleAvatarUpdate = new PopupWithForm(
   { popupSelector: "#picture-modal" },
-  function handleAvatarUpdate(formValues){
-    api
-      .updateAvatar(formValues)
-      .then((updatedData) => {
-         updateAvatarModal.close();
-      })
-      .catch(console.error);
-  }
+      handlePictureSubmit
 );
 handleAvatarUpdate.setEventListeners();
 
@@ -89,7 +81,12 @@ function renderCard(cardData) {
 
 avatarButton.addEventListener("click", () => {
   handleAvatarUpdate.open();
-})
+});
+
+function handlePictureSubmit(newImage) {
+  usersInfo.setAvatar(newImage);
+  handleAvatarUpdate.close();
+}
 
 profileEditButton.addEventListener("click", () => {
   const currentUserInfo = usersInfo.getUserInfo();
