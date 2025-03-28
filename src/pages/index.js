@@ -17,7 +17,6 @@ import {
 import { config } from "../utils/Constants.js";
 import Api from "../components/API.js";
 import PopupWithConfirm from "../components/PopupwithConfirm.js";
-import ProfilePicture from "../components/ProfilePicture.js";
 
 const profileEditButton = document.querySelector(".profile__edit-button");
 const profileEditModal = document.querySelector("#edit-modal");
@@ -38,17 +37,23 @@ const imageModal = document.querySelector("#image-modal");
 const imageCaption = document.querySelector(".modal__caption");
 const imageClose = imageModal.querySelector(".modal__close");
 
-const usersInfo = new UserInfo({nameElement: ".profile__title", jobElement: ".profile__paragraph"});
+const avatarButton = document.querySelector(".profile__avatar-button");
+const pictureUrlInput = document.querySelector(".picture-modal-input");
 
-const changePicture = new ProfilePicture(
-  { popupSelector: "#picture-modal" }, () => {
-    (avatarChange) => {
-      console.log("open", avatarChange);
-      changePicture.getProfileInfo();
-    }
-  } 
+const usersInfo = new UserInfo({nameElement: ".profile__title", jobElement: ".profile__paragraph", avatarElement: "#picture-modal-input"});
+
+const handleAvatarUpdate = new PopupWithForm(
+  { popupSelector: "#picture-modal" },
+  function handleAvatarUpdate(formValues){
+    api
+      .updateAvatar(formValues)
+      .then((updatedData) => {
+         updateAvatarModal.close();
+      })
+      .catch(console.error);
+  }
 );
-changePicture.setEventListeners();
+handleAvatarUpdate.setEventListeners();
 
 const addPopupForm = new PopupWithForm(
   { popupSelector: "#add-modal" },
@@ -81,6 +86,10 @@ function generateCard(cardData) {
 function renderCard(cardData) {
   cardListSection.addItem(generateCard(cardData));
 }
+
+avatarButton.addEventListener("click", () => {
+  handleAvatarUpdate.open();
+})
 
 profileEditButton.addEventListener("click", () => {
   const currentUserInfo = usersInfo.getUserInfo();
