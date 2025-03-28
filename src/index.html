@@ -19,7 +19,7 @@
         <main class="content">
             <section class="profile page__section">
                 <div class="profile__avatar-container">
-                <img class="profile__image" src="<%=require('./images/profile-picture.png')%>" alt="avatar">
+                <img class="profile__image" src="<%=require('./images/profile-picture.png')%>" alt="avatar" name="avatar">
                 <button class="profile__avatar-button" id="picture-change"></button>
                 </div>
                 <div class="profile__info">
@@ -102,7 +102,7 @@
                 <button class="modal__close" id="picture-close"></button>
                 <p class="modal__header" id="picture-header">Change profile picture</p>
                 <label class="modal__label" for="picture-change">
-                    <input class="modal__input" id="picture-modal-input" type="url"  placeholder="https://somewebsite.com/someimage.jpg" name="link" required>
+                    <input class="modal__input" id="picture-modal-input" type="url"  placeholder="https://somewebsite.com/someimage.jpg" required>
                     <span class="modal__popup-error" id="picture-change-input-error" disabled></span>
                 </label>
                 <button class="modal__button modal__button_disabled" id="picture-button" disabled>Save</button>

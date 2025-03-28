@@ -43,7 +43,16 @@ const usersInfo = new UserInfo({nameElement: ".profile__title", jobElement: ".pr
 
 const handleAvatarUpdate = new PopupWithForm(
   { popupSelector: "#picture-modal" },
-      handlePictureSubmit
+  function handlePictureSubmit(formValues){
+    console.log(formValues)
+    api
+      .updateAvatar(formValues)
+      .then((updatedData) => {
+        usersInfo.setAvatar(updatedData.avatar);
+        handleAvatarUpdate.close();
+      })
+      .catch(console.error);
+  }
 );
 handleAvatarUpdate.setEventListeners();
 
@@ -83,10 +92,7 @@ avatarButton.addEventListener("click", () => {
   handleAvatarUpdate.open();
 });
 
-function handlePictureSubmit(newImage) {
-  usersInfo.setAvatar(newImage);
-  handleAvatarUpdate.close();
-}
+
 
 profileEditButton.addEventListener("click", () => {
   const currentUserInfo = usersInfo.getUserInfo();
