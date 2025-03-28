@@ -41,7 +41,12 @@ const imageClose = imageModal.querySelector(".modal__close");
 const usersInfo = new UserInfo({nameElement: ".profile__title", jobElement: ".profile__paragraph"});
 
 const changePicture = new ProfilePicture(
-  { popupSelector: "#picture-modal" }, { profilePicture: "#picture-modal" }
+  { popupSelector: "#picture-modal" }, () => {
+    (avatarChange) => {
+      console.log("open", avatarChange);
+      changePicture.getProfileInfo();
+    }
+  } 
 );
 changePicture.setEventListeners();
 

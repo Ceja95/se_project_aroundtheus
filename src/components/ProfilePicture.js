@@ -1,15 +1,14 @@
 import PopupWithForm from "./PopupWithForms";
 
 export default class ProfilePicture extends PopupWithForm{
-    constructor({ popupSelector}, { profilePicture, profileAlt }){
-        super({ popupSelector});
-        this._profilePicture = profilePicture;
-        this._profileAlt = profileAlt;
+    constructor({ popupSelector}, handleAvatarOpen){
+        super({ popupSelector });
+        this._handleAvatarOpen = handleAvatarOpen;
     }
 
-    open(avatarModal) {
-        this._avatarPicture = avatarPicture;
-        super.open()
+    open(avatarChange) {
+        this._avatarChange = avatarChange;
+        super.open();
     }
 
     setEventListeners() {
@@ -18,7 +17,7 @@ export default class ProfilePicture extends PopupWithForm{
         this._changeAvatar = document.querySelector("#picture-change");
 
         this._changeAvatar.addEventListener("click", () => {
-        this._showAvatarModal();
+        this._showAvatarModal(this);
         })
        
         this._closePicture.addEventListener("click", (e) => {
@@ -31,20 +30,22 @@ export default class ProfilePicture extends PopupWithForm{
             this.close();
         })
     }
-
+     
     _showAvatarModal() {
-        this._profilePicture.open(this);
+        this._handleAvatarOpen.open(this);
     }
 
     getProfileInfo(){
+        this._profilePicture = document.querySelector(".profile__image");
+
         return {
-            link: this._profilePicture.src,
-            alt:  this._profileAlt.textContent
+            src: this._profilePicture.src,
+            alt: this._profilePicture.alt
         }
     }
 
     setProfileInfo(data){
-        this._profilePicture.src = data.link;
-        this.profileAlt.textContent = data.alt;
-    }
+        this._profilePicture.src = data.src,
+        this._profilePicture.alt = data.alt
+}
 }
