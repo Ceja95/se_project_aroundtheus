@@ -1,96 +1,78 @@
 export default class Api {
-    constructor(options) {
-        this._baseUrl = options.baseUrl;
-        this._headers = options.headers;
+    constructor({ baseUrl, headers}) {
+        this._baseUrl = baseUrl;
+        this._headers = headers;
+    }
+    
+    _handleServerResponse(res) {
+       return res.ok ? res.json() : Promise.reject("Error: ${res.status}");
     }
 
-    getInitialCards() {
-        return fetch(`${this._baseUrl}/cards`, {headers: this._headers})
-        .then(res => {
-            if(res.ok) {
-                return res.json();
-            }
-            return Promise.reject(`Error: ${res.status}`);
-        })
-        .catch((err => {
-            console.error(err);
-        }))
+    async getInitialCards() {
+        const result = await fetch(`${this._baseUrl}/cards`, { headers: this._headers });
+        return this._handleServerResponse(result);
     }
 
-    promiseAll() {
-        return Promise.all([getUserInfo(), getView()]);
+    async userInfo() {
+        const userResults = await fetch(`${this._baseUrl}/users/me`, { headers: this._headers });
+        return this._handleServerResponse(userResults);
     }
-
-    userInfo() {
-        return fetch(`${this._baseUrl}/users/me`, {headers: this._headers}, {
-        "about": "Placeholder description",
-        "avatar": "https://practicum-content.s3.amazonaws.com/resources/default-avatar_1704458546.png",
-        "name": "Placeholder name",
-        "_id": "d43d74f4-d8b7-495e-a8b5-9bce636b1f9e"
+    
+    async profileEdit({ name, about }) {
+        const editResults = await fetch(`${this._baseUrl}/user/me`, {
+            headers: this._headers,
+            method: "PATCH",
+            headers: this._headers,
+            body: JSON.stringify({
+                name: name,
+                about: about
+            })
         });
+        return this._handleServerResponse(editResults);
     }
 
-    cardLoader() {
-        return fetch(`${this._baseUrl}/cards`, {headers: this._headers})
-        .then((res) => res.json())
-        .catch((err => {
-            console.error(err);
-        }))
-    }
-
-    profileEdit(name, about) {
-        return fetch(`${this._baseUrl}/user/me`, {
-        headers: this._headers,
-        method: "PATCH",
-        headers: this._headers,
-        body: JSON.stringify({
-            name: name,
-            about: about
-        })         
-    });
-    }
-
-    addNewCard(name, link) {
-        return fetch(`${this._baseUrl}/cards`, {
+    async addCard({ name, link }) {
+        const cardResults = await fetch(`${this._baseUrl}/cards`, {
             headers: this._headers,
             method: "POST",
             body: {
                 name: name,
                 link: link
-            } 
+            }
         });
+        return this._handleServerResponse(cardResults);
     }
 
-    deleteCard() {
-       return fetch(`${this._baseUrl}/cards/cardId`, {
+    async deleteCard() {
+       const deleteResults = await fetch(`${this._baseUrl}/cards/cardId`, {
         headers: this._headers,
         method: "DELETE"
-       })
+       });
+       return this._handleServerResponse(deleteResults);
     }
     
-    addLikes() {
-        return fetch(`${this._baseUrl}/cards/cardId/likes`, {
+    async addLikes() {
+        const likeResults = await fetch(`${this._baseUrl}/cards/cardId/likes`, {
             headers: this._headers,
             method: "PUT"
-        })
+        });
+        return this._handleServerResponse(likeResults);
     }
 
-    removeLikes() {
-        return fetch(`${this._baseUrl}/cards/cardId/likes`, {
+    async removeLikes() {
+        const removeLikeResults = await fetch(`${this._baseUrl}/cards/cardId/likes`, {
             headers: this._headers,
             method: "DELETE"
-        })
+        });
+        return this._handleServerResponse(removeLikeResults);
     }
 
-    updateAvatar() {
-        return fetch(`${this._baseUrl}/users/me/avatar`, { 
+    async updateAvatar({ avatar }) {
+        const avatarResults = await fetch(`${this._baseUrl}/users/me/avatar`, { 
             headers: this._headers,
             method: "PATCH",
-            body: JSON.stringify({avatar})
-        })
-        .then((res => res.json()))
-        .catch((err => {
-            console.error(err);
-        }))
+            body: JSON.stringify({ avatar })
+        });
+        return this._handleServerResponse(avatarResults);
     }
 }
