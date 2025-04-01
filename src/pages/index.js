@@ -38,14 +38,17 @@ const imageCaption = document.querySelector(".modal__caption");
 const imageClose = imageModal.querySelector(".modal__close");
 
 const avatarButton = document.querySelector(".profile__avatar-button");
+const avatarPictureModal = document.querySelector("#picture-modal");
+const avatarChangeForm = avatarPictureModal.querySelector(".modal__form");
 
 const usersInfo = new UserInfo({nameElement: ".profile__title", jobElement: ".profile__paragraph", avatarElement: ".profile__image"});
 
 const handleAvatarUpdate = new PopupWithForm(
   { popupSelector: "#picture-modal" },
-  function handlePictureSubmit(newImage){
+  function handlePictureSubmit(updatedData){
+    console.log("updated Data", updatedData)
     api
-      .updateAvatar(newImage)
+      .updateAvatar(updatedData)
       .then((updatedData) => {
         usersInfo.setAvatar(updatedData.avatar);
         handleAvatarUpdate.close();
@@ -140,8 +143,10 @@ cardListSection.renderItems();
 
 const editFormValidator = new FormValidator(config, profileEditForm);
 const addFormValidator = new FormValidator(config, addForm);
+const avatarFormValidator = new FormValidator(config, avatarChangeForm);
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
+avatarFormValidator.enableValidation();
 
 const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",

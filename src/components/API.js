@@ -68,11 +68,13 @@ export default class Api {
     }
 
     async updateAvatar({ avatar }) {
+        console.log(avatar)
         const avatarResults = await fetch(`${this._baseUrl}/users/me/avatar`, { 
             headers: this._headers,
             method: "PATCH",
             body: JSON.stringify({ avatar })
         });
+        console.log(avatarResults)
         return this._handleServerResponse(avatarResults);
     }
 }
