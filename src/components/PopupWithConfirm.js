@@ -4,6 +4,8 @@ export default class PopupWithConfirm extends PopupWithForm {
     constructor({ popupSelector }, handleConfirmAction) {
         super({ popupSelector }, handleConfirmAction);
         this._handleConfirmAction = handleConfirmAction;
+        this._submitBtn = this._popupElement.querySelector(".modal__button");
+        this._submitBtnContent = this._submitBtn.textContent; 
     }
 
     open(itemToDelete) {
@@ -31,5 +33,13 @@ export default class PopupWithConfirm extends PopupWithForm {
             e.preventDefault();
             this.close();
         });
+    }
+
+    setLoading(isLoading, loadingText) {
+        if(isLoading) {
+            this._submitBtnContent = loadingText;
+        }else {
+            this._submitBtn.textContent = this._submitBtnContent;
+        }
     }
 }

@@ -4,6 +4,7 @@ import "../pages/index.css";
 import Section from "../components/Sections.js";
 import PopupWithForm from "../components/PopupWithForms.js";
 import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithConfirm from "../components/PopupwithConfirm.js";
 import UserInfo from "../components/UserInfo.js";
 import {
   object1,
@@ -16,7 +17,6 @@ import {
 } from "../utils/Constants.js";
 import { config } from "../utils/Constants.js";
 import Api from "../components/API.js";
-import PopupWithConfirm from "../components/PopupwithConfirm.js";
 
 const profileEditButton = document.querySelector(".profile__edit-button");
 const profileEditModal = document.querySelector("#edit-modal");
