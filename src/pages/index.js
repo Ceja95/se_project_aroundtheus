@@ -155,3 +155,12 @@ const api = new Api({
       "Content-Type": "application/json"
   }
 });
+
+addPopupForm.setLoading(true, "Saving...");
+
+api.addCard()
+  .then()
+  .catch()
+  .finally(() => {
+    addPopupForm.setLoading(false);
+  });
