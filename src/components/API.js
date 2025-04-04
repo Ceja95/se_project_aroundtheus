@@ -19,10 +19,9 @@ export default class Api {
     }
     
     async profileEdit({ name, about }) {
-        const editResults = await fetch(`${this._baseUrl}/user/me`, {
+        const editResults = await fetch(`${this._baseUrl}/users/me`, {
             headers: this._headers,
             method: "PATCH",
-            headers: this._headers,
             body: JSON.stringify({
                 name: name,
                 about: about

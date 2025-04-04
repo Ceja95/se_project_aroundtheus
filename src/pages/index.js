@@ -98,14 +98,25 @@ profileEditButton.addEventListener("click", () => {
   const currentUserInfo = usersInfo.getUserInfo();
   
   profileTitleInput.value = currentUserInfo.name;
-  profileDescriptionInput.value = currentUserInfo.description;
+  profileDescriptionInput.value = currentUserInfo.about;
 
   editPopupForm.open();
 });
 
 function handleEditFormSubmit(data) {
-  usersInfo.setUserInfo(data);
-  editPopupForm.close();
+  editPopupForm.setLoading(true, "Saving...");
+  const name = data.name;
+  const about = data.about;
+
+  api.profileEdit({ name, about })
+  .then((newInfo => {
+    usersInfo.setUserInfo(newInfo);
+    editPopupForm.close();
+  }))
+  .catch(console.error)
+  .finally(() => {
+    editPopupForm.setLoading(false, "Saving...");
+  })
 }
 
 const profileAddButton = document.querySelector(".profile__add-button");
