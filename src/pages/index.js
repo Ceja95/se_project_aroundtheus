@@ -45,16 +45,7 @@ const usersInfo = new UserInfo({nameElement: ".profile__title", jobElement: ".pr
 
 const handleAvatarUpdate = new PopupWithForm(
   { popupSelector: "#picture-modal" },
-  function handlePictureSubmit(updatedData){
-    console.log("updated Data", updatedData)
-    api
-      .updateAvatar(updatedData)
-      .then((updatedData) => {
-        usersInfo.setAvatar(updatedData.avatar);
-        handleAvatarUpdate.close();
-      })
-      .catch(console.error);
-  }
+  handlePictureSubmit
 );
 handleAvatarUpdate.setEventListeners();
 
@@ -93,6 +84,20 @@ function renderCard(cardData) {
 avatarButton.addEventListener("click", () => {
   handleAvatarUpdate.open();
 });
+
+function handlePictureSubmit(updatedData){
+  handleAvatarUpdate.setLoading(true, "Saving...");
+  console.log("updated Data", updatedData)
+  api.updateAvatar(updatedData)
+    .then((updatedData) => {
+      usersInfo.setAvatar(updatedData.avatar);
+      handleAvatarUpdate.close();
+    })
+    .catch(console.error)
+    .finally(() => {
+      handleAvatarUpdate.setLoading(false, "Saving...");
+    })
+}
 
 profileEditButton.addEventListener("click", () => {
   const currentUserInfo = usersInfo.getUserInfo();
