@@ -35,10 +35,10 @@ export default class Api {
         const cardResults = await fetch(`${this._baseUrl}/cards`, {
             headers: this._headers,
             method: "POST",
-            body: {
+            body: JSON.stringify({
                 name: name,
                 link: link
-            }
+            })
         });
         return this._handleServerResponse(cardResults);
     }
