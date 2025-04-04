@@ -122,13 +122,21 @@ profileAddButton.addEventListener("click", () => {
 });
 
 function handleAddFormSubmit(data) {
+  addPopupForm.setLoading(true, "Saving...");
   const name = data.name;
   const link = data.link;
-  const card = generateCard({ name, link });
 
-  cardListSection.addItem(card);
-  addForm.reset();
-  addPopupForm.close();
+  api.addCard({ name, link })
+  .then((newCard) => {
+    const card = generateCard(newCard);
+    cardListSection.addItem(card);
+    addForm.reset();
+    addPopupForm.close();
+  })
+  .catch(console.error)
+  .finally(() => {
+    addPopupForm.setLoading(false, "Saving...");
+  });
 }
 
 function handleImageClick(cardData) {
@@ -155,12 +163,3 @@ const api = new Api({
       "Content-Type": "application/json"
   }
 });
-
-addPopupForm.setLoading(true, "Saving...");
-
-api.addCard()
-  .then()
-  .catch()
-  .finally(() => {
-    addPopupForm.setLoading(false);
-  });
