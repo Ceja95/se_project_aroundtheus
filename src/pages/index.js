@@ -66,7 +66,7 @@ const confirmDelete = new PopupWithConfirm(
   (itemToDelete) => {
     console.log("deleting", itemToDelete);
     itemToDelete.handleDeleteCard();
-  });
+  })
 confirmDelete.setEventListeners();
 
 const imagePopup = new PopupWithImage({ popupSelector: "#image-modal" });
