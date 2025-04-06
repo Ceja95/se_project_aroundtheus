@@ -9,7 +9,7 @@ export default class Api {
     }
 
     async getInitialCards() {
-        const result = await fetch(`${this._baseUrl}/cards`, { headers: this._headers });
+        const result = await fetch(`${this._baseUrl}/cards`, { headers: this._headers});
         return this._handleServerResponse(result);
     }
 
