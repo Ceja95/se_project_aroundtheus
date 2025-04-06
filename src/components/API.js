@@ -50,20 +50,12 @@ export default class Api {
        return this._handleServerResponse(deleteResults);
     }
     
-    async addLikes() {
-        const likeResults = await fetch(`${this._baseUrl}/cards/cardId/likes`, {
+    async cardLikes(cardId, isLiked){
+        const cardLikeResults = await fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
             headers: this._headers,
-            method: "PUT"
+            method: isLiked ? "DELETE" : "PUT"
         });
-        return this._handleServerResponse(likeResults);
-    }
-
-    async removeLikes() {
-        const removeLikeResults = await fetch(`${this._baseUrl}/cards/cardId/likes`, {
-            headers: this._headers,
-            method: "DELETE"
-        });
-        return this._handleServerResponse(removeLikeResults);
+        return this._handleServerResponse(cardLikeResults);
     }
 
     async updateAvatar({ avatar }) {
