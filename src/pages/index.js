@@ -73,7 +73,7 @@ const imagePopup = new PopupWithImage({ popupSelector: "#image-modal" });
 imagePopup.setEventListeners();
 
 function generateCard(cardData) {
-  const card = new Card(cardData, ".card-template", handleImageClick, confirmDelete);
+  const card = new Card(cardData, ".card-template", handleImageClick, confirmDelete, handleCardLike);
   return card.getView();
 }
 
@@ -163,7 +163,14 @@ const cardListSection = new Section(
   { items: initialCards, renderer: renderCard },
   ".cards__list"
 );
-cardListSection.renderItems();
+
+function handleCardLike(card) {
+  api.cardLikes(card._id, card.isLiked)
+  .then((updatedLike => {
+    handleLikeIcon(updatedLike);
+  }))
+  .catch(console.error);
+}
 
 const editFormValidator = new FormValidator(config, profileEditForm);
 const addFormValidator = new FormValidator(config, addForm);
@@ -182,5 +189,6 @@ const api = new Api({
 
 api.getInitialCards()
 .then((cards => {
-  
-}));
+  cardListSection.renderItems(cards);
+}))
+.catch(console.error);

@@ -1,9 +1,10 @@
 export default class Card {
-  constructor(cardData, cardSelector, handleImageClick, confirmDeletePopup) {
+  constructor(cardData, cardSelector, handleImageClick, confirmDeletePopup, confirmCardLike) {
     this._cardData = cardData;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
     this._confirmDeletePopup = confirmDeletePopup;
+    this._confirmCardLike = confirmCardLike;
   }
 
   _setEventListeners() {
@@ -34,6 +35,10 @@ export default class Card {
     this._cardElement.querySelector(".card__like-button").classList.toggle("card__like-button_active");
   }
 
+  handleLikeIcon() {
+    this._handleLikeIcon();
+  }
+
   _handleDeleteCard() {
     this._cardElement.remove();
   }
@@ -41,6 +46,7 @@ export default class Card {
   handleDeleteCard() {
     this._handleDeleteCard();
   }
+  
 
   getView() {
     this._cardElement = document
