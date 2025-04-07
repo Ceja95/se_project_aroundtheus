@@ -42,8 +42,8 @@ export default class Api {
         return this._handleServerResponse(cardResults);
     }
 
-    async deleteCard() {
-       const deleteResults = await fetch(`${this._baseUrl}/cards/cardId`, {
+    async deleteCard(cardId) {
+       const deleteResults = await fetch(`${this._baseUrl}/cards/${cardId}`, {
         headers: this._headers,
         method: "DELETE"
        });

@@ -63,10 +63,8 @@ editPopupForm.setEventListeners();
 
 const confirmDelete = new PopupWithConfirm(
   {popupSelector: "#confirm-modal"},
-  (itemToDelete) => {
-    console.log("deleting", itemToDelete);
-    itemToDelete.handleDeleteCard();
-  });
+  deleteCurrentCard
+  );
 confirmDelete.setEventListeners();
 
 const imagePopup = new PopupWithImage({ popupSelector: "#image-modal" });
@@ -87,7 +85,6 @@ avatarButton.addEventListener("click", () => {
 
 function handlePictureSubmit(updatedData){
   handleAvatarUpdate.setLoading(true, "Saving...");
-  console.log("updated Data", updatedData)
   api.updateAvatar(updatedData)
     .then((updatedData) => {
       usersInfo.setAvatar(updatedData.avatar);
@@ -155,6 +152,15 @@ function handleAddFormSubmit(data) {
   });
 }
 
+function deleteCurrentCard(card) {
+  api.deleteCard(card._cardData._id)
+  .then(( itemToDelete => {
+    card.handleDeleteCard(itemToDelete);
+    console.log("deleting", itemToDelete);
+  }))
+  .catch(console.error);
+}
+
 function handleImageClick(cardData) {
   imagePopup.open(cardData);
 }
@@ -165,7 +171,6 @@ const cardListSection = new Section(
 );
 
 function handleCardLike(card) {
-  console.log("card", card);
   api.cardLikes(card._cardData._id, card._cardData.isLiked)
   .then((updatedLike => {
     card.handleLikeIcon(updatedLike);
