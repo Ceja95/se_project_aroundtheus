@@ -165,7 +165,7 @@ const cardListSection = new Section(
 );
 
 function handleCardLike(card) {
-  api.cardLikes(card._id, card.isLiked)
+  api.cardLikes(card._id, card.likes)
   .then((updatedLike => {
     handleLikeIcon(updatedLike);
   }))
