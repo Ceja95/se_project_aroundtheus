@@ -165,9 +165,10 @@ const cardListSection = new Section(
 );
 
 function handleCardLike(card) {
-  api.cardLikes(card._id, card.likes)
+  console.log("card", card);
+  api.cardLikes(card._cardData._id, card._cardData.isLiked)
   .then((updatedLike => {
-    handleLikeIcon(updatedLike);
+    card.handleLikeIcon(updatedLike);
   }))
   .catch(console.error);
 }
