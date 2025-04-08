@@ -13,8 +13,15 @@ export default class Api {
         return this._handleServerResponse(result);
     }
 
-    async userInfo() {
-        const userResults = await fetch(`${this._baseUrl}/users/me`, { headers: this._headers });
+    async userInfo({ name, about }) {
+        const userResults = await fetch(`${this._baseUrl}/users/me`, {
+            headers: this._headers,
+            method: "PATCH",
+            body: JSON.stringify({
+                name: name,
+                about: about
+            }) 
+        });
         return this._handleServerResponse(userResults);
     }
     
