@@ -106,6 +106,11 @@ function handlePictureSubmit(updatedData) {
 }
 
 profileEditButton.addEventListener("click", () => {
+  const currentUserInfo = usersInfo.getUserInfo();
+  
+  profileTitleInput.value = currentUserInfo.name;
+  profileDescriptionInput.value = currentUserInfo.about;
+
   editPopupForm.open();
 });
 
