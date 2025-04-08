@@ -105,15 +105,16 @@ profileEditButton.addEventListener("click", () => {
   editPopupForm.open();
 });
 
-function handleEditFormSubmit(data) {
+function handleEditFormSubmit(newInfo) {
   editPopupForm.setLoading(true, "Saving...");
-  const name = data.name;
-  const about = data.about;
+  const usersInfoDisplay = usersInfo.getUserInfo();
   console.log(api.profileEdit);
 
-  api.profileEdit({name,about})
+  api.profileEdit(newInfo)
   .then((newInfo => {
     usersInfo.setUserInfo(newInfo);
+    profileTitleInput.value = usersInfoDisplay.name;
+    profileDescriptionInput.value = usersInfoDisplay.about;
     editPopupForm.close();
   }))
   .catch(console.error)
