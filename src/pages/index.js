@@ -106,21 +106,14 @@ function handlePictureSubmit(updatedData) {
 }
 
 profileEditButton.addEventListener("click", () => {
-  const currentUserInfo = usersInfo.getUserInfo();
-
-  profileTitleInput.value = currentUserInfo.name;
-  profileDescriptionInput.value = currentUserInfo.about;
-
   editPopupForm.open();
 });
 
-function handleEditFormSubmit(data) {
+function handleEditFormSubmit(newInfo) {
   editPopupForm.setLoading(true, "Saving...");
-  const name = data.name;
-  const about = data.about;
 
   api
-    .userInfo({name,about})
+    .profileEdit(newInfo)
     .then((newInfo) => {
       usersInfo.setUserInfo(newInfo);
       editPopupForm.close();
@@ -210,5 +203,19 @@ api
   .getInitialCards()
   .then((cards) => {
     cardListSection.renderItems(cards);
+  })
+  .catch(console.error);
+
+api
+  .userInfo()
+  .then((userInfo) => {
+    usersInfo.setUserInfo(userInfo);
+  })
+  .catch(console.error);
+
+api
+  .updateAvatar({ avatar })
+  .then((newImage) => {
+    usersInfo.setAvatar(newImage.avatar);
   })
   .catch(console.error);

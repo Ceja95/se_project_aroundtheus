@@ -13,16 +13,21 @@ export default class Api {
         return this._handleServerResponse(result);
     }
 
-    async userInfo({ name, about }) {
-        const userResults = await fetch(`${this._baseUrl}/users/me`, {
+    async userInfo() {
+        const userResults = await fetch(`${this._baseUrl}/users/me`, {headers: this._headers});
+        return this._handleServerResponse(userResults);
+    }
+    
+    async profileEdit({ name, about }) {
+        const editResults = await fetch(`${this._baseUrl}/users/me`, {
             headers: this._headers,
             method: "PATCH",
             body: JSON.stringify({
                 name: name,
                 about: about
-            }) 
+            })
         });
-        return this._handleServerResponse(userResults);
+        return this._handleServerResponse(editResults);
     }
 
     async addCard({ name, link }) {
@@ -54,7 +59,6 @@ export default class Api {
     }
 
     async updateAvatar({ avatar }) {
-        console.log(avatar)
         const avatarResults = await fetch(`${this._baseUrl}/users/me/avatar`, { 
             headers: this._headers,
             method: "PATCH",
