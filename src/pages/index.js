@@ -214,7 +214,7 @@ api
   .catch(console.error);
 
 api
-  .updateAvatar({ avatar })
+  .updateAvatar(avatar)
   .then((newImage) => {
     usersInfo.setAvatar(newImage.avatar);
   })
