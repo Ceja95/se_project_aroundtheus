@@ -107,18 +107,20 @@ function handlePictureSubmit(updatedData) {
 
 profileEditButton.addEventListener("click", () => {
   const currentUserInfo = usersInfo.getUserInfo();
-  
+
   profileTitleInput.value = currentUserInfo.name;
   profileDescriptionInput.value = currentUserInfo.about;
 
   editPopupForm.open();
 });
 
-function handleEditFormSubmit(newInfo) {
+function handleEditFormSubmit(data) {
   editPopupForm.setLoading(true, "Saving...");
+  const name = data.name;
+  const about = data.about;
 
   api
-    .userInfo(newInfo)
+    .userInfo({name,about})
     .then((newInfo) => {
       usersInfo.setUserInfo(newInfo);
       editPopupForm.close();

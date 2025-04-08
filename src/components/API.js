@@ -24,18 +24,6 @@ export default class Api {
         });
         return this._handleServerResponse(userResults);
     }
-    
-    async profileEdit({ name, about }) {
-        const editResults = await fetch(`${this._baseUrl}/users/me`, {
-            headers: this._headers,
-            method: "PATCH",
-            body: JSON.stringify({
-                name: name,
-                about: about
-            })
-        });
-        return this._handleServerResponse(editResults);
-    }
 
     async addCard({ name, link }) {
         const cardResults = await fetch(`${this._baseUrl}/cards`, {
