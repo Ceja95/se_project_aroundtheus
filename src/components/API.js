@@ -65,7 +65,6 @@ export default class Api {
             method: "PATCH",
             body: JSON.stringify({ avatar })
         });
-        console.log(avatarResults)
         return this._handleServerResponse(avatarResults);
     }
 }

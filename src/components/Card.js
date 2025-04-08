@@ -60,9 +60,10 @@ export default class Card {
       this._cardImage.src = this._cardData.link;
       this._cardImage.alt = this._cardData.alt;
       this._cardTitle.textContent = this._cardData.name;
+      this._cardData.isLiked && this._cardElement.querySelector(".card__like-button").classList.toggle("card__like-button_active");
     
     this._setEventListeners();
-
+    
     return this._cardElement;
   }
 }

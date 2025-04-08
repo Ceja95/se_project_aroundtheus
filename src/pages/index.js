@@ -109,8 +109,9 @@ function handleEditFormSubmit(data) {
   editPopupForm.setLoading(true, "Saving...");
   const name = data.name;
   const about = data.about;
+  console.log(api.profileEdit);
 
-  api.profileEdit({ name, about })
+  api.profileEdit({name,about})
   .then((newInfo => {
     usersInfo.setUserInfo(newInfo);
     editPopupForm.close();
