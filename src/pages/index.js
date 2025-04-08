@@ -23,9 +23,9 @@ const profileEditModal = document.querySelector("#edit-modal");
 const profileCloseButton = document.querySelector(".modal__close");
 const profileTitle = document.querySelector(".profile__title");
 const profileDescription = document.querySelector(".profile__paragraph");
-const profileTitleInput = document.querySelector("#profile-name-input");
+const profileTitleInput = document.querySelector(".profile__title");
 const profileDescriptionInput = document.querySelector(
-  "#profile-description-input"
+  ".profile__paragraph"
 );
 const profileEditForm = profileEditModal.querySelector(".modal__form");
 const cardTemplate =
@@ -97,24 +97,15 @@ function handlePictureSubmit(updatedData){
 }
 
 profileEditButton.addEventListener("click", () => {
-  const currentUserInfo = usersInfo.getUserInfo();
-  
-  profileTitleInput.value = currentUserInfo.name;
-  profileDescriptionInput.value = currentUserInfo.about;
-
   editPopupForm.open();
 });
 
 function handleEditFormSubmit(newInfo) {
   editPopupForm.setLoading(true, "Saving...");
-  const usersInfoDisplay = usersInfo.getUserInfo();
-  console.log(api.profileEdit);
 
   api.profileEdit(newInfo)
   .then((newInfo => {
     usersInfo.setUserInfo(newInfo);
-    profileTitleInput.value = usersInfoDisplay.name;
-    profileDescriptionInput.value = usersInfoDisplay.about;
     editPopupForm.close();
   }))
   .catch(console.error)
