@@ -8,14 +8,14 @@ export default class UserInfo {
         return {
             name: this._nameElement.textContent,
             about: this._jobElement.textContent,
-            link: this._avatarElement.textContent
+            avatar: this._avatarElement.textContent
         }
     }
 
     setUserInfo(data) {
         this._nameElement.textContent = data.name;
         this._jobElement.textContent = data.about;
-        this._avatarElement.textContent = data.link;
+        this._avatarElement.src = data.avatar;
     }
 
     setAvatar(newImage) {

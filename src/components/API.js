@@ -14,8 +14,7 @@ export default class Api {
     }
 
     async userInfo() {
-        const userResults = await fetch(`${this._baseUrl}/users/me`, {headers: this._headers
-        });
+        const userResults = await fetch(`${this._baseUrl}/users/me`, {headers: this._headers});
         return this._handleServerResponse(userResults);
     }
     
@@ -60,7 +59,6 @@ export default class Api {
     }
 
     async updateAvatar({ avatar }) {
-        console.log(avatar)
         const avatarResults = await fetch(`${this._baseUrl}/users/me/avatar`, { 
             headers: this._headers,
             method: "PATCH",

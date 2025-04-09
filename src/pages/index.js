@@ -106,6 +106,10 @@ function handlePictureSubmit(updatedData) {
 }
 
 profileEditButton.addEventListener("click", () => {
+  const currentUserInfo = usersInfo.getUserInfo();
+
+  profileTitleInput.value = currentUserInfo.name;
+  profileDescriptionInput.value = currentUserInfo.about;
   editPopupForm.open();
 });
 
@@ -196,7 +200,7 @@ const api = new Api({
   headers: {
     authorization: "d43d74f4-d8b7-495e-a8b5-9bce636b1f9e",
     "Content-Type": "application/json",
-  },
+  }
 });
 
 api
@@ -210,12 +214,5 @@ api
   .userInfo()
   .then((userInfo) => {
     usersInfo.setUserInfo(userInfo);
-  })
-  .catch(console.error);
-
-api
-  .updateAvatar(avatar)
-  .then((newImage) => {
-    usersInfo.setAvatar(newImage.avatar);
   })
   .catch(console.error);
