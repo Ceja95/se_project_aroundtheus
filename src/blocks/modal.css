@@ -33,10 +33,6 @@
     flex-wrap: wrap;
 }
 
-#confirm-form.modal__form {
-    height: 181px;
-}
-
 .modal__header {
     margin: 0;
     font-family: "Inter", Arial, sans-serif;

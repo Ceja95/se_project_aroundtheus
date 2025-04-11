@@ -23,8 +23,8 @@ const profileEditModal = document.querySelector("#edit-modal");
 const profileCloseButton = document.querySelector(".modal__close");
 const profileTitle = document.querySelector(".profile__title");
 const profileDescription = document.querySelector(".profile__paragraph");
-const profileTitleInput = document.querySelector(".profile__title");
-const profileDescriptionInput = document.querySelector(".profile__paragraph");
+const profileTitleInput = document.querySelector("#profile-name-input");
+const profileDescriptionInput = document.querySelector("#profile-description-input");
 const profileEditForm = profileEditModal.querySelector(".modal__form");
 const cardTemplate =
   document.querySelector(".card-template").content.firstElementChild;
@@ -97,6 +97,7 @@ function handlePictureSubmit(updatedData) {
     .updateAvatar(updatedData)
     .then((updatedData) => {
       usersInfo.setAvatar(updatedData.avatar);
+      avatarChangeForm.reset(updatedData.avatar);
       handleAvatarUpdate.close();
     })
     .catch(console.error)
@@ -106,6 +107,9 @@ function handlePictureSubmit(updatedData) {
 }
 
 profileEditButton.addEventListener("click", () => {
+  const values = usersInfo.getUserInfo();
+  profileTitleInput.value = values.name;
+  profileDescriptionInput.value = values.about;
   editPopupForm.open();
 });
 
@@ -162,6 +166,8 @@ function deleteCurrentCard(card) {
     .then((itemToDelete) => {
       card.handleDeleteCard(itemToDelete);
       console.log("deleting", itemToDelete);
+      confirmDelete.close();
+      
     })
     .catch(console.error);
 }
